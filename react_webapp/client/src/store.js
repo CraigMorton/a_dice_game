@@ -1,5 +1,4 @@
 import {createStore, combineReducers} from "redux";
-
 import {currentPlayerReducer} from "./reducers/currentPlayerReducer.js";
 import {diceReducer} from "./reducers/diceReducer.js";
 import {playerInfoReducer} from "./reducers/playerInfoReducer.js";
@@ -21,7 +20,8 @@ const reducer = combineReducers({
 const initialState = {
   currentPlayer:{},
   dice: {
-    numDice: 5
+    numDice: 5,
+    diceArray:[{saved: false}, {saved: false}, {saved: false}, {saved: false}, {saved: false}]
   },
   playerInfo: {},
   playerList: {},
@@ -35,8 +35,12 @@ const initialState = {
   }
 };
 const store = createStore(reducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+export {store};
 export default store;
 // CAN'T IMPORT ANYTHING VIA exports.js IN store.js
+
+// import {currentPlayerReducer, diceReducer, playerInfoReducer, playerListReducer, settingsReducer, sharedResourceReducer, statsReducer} from "./exports.js";
+
 
 // import {reducers} from "./exports.js";
 // console.log(reducers);

@@ -1,3 +1,12 @@
+import React from "react";
+
+const DiceRolledCounter = ({
+  state,
+  listeners
+}) => (<h4>Dice Rolled: {state}</h4>)
+
+export {DiceRolledCounter};
+
 // export default () => (<div>{this.props.count}</div>)
 // var DiceRolledCounter = React.createClass({
 //   render: function(){
@@ -10,8 +19,11 @@
 // })
 // var React = require('react');
 
-import React from "react";
-export default ({state, listeners}) => (<h4>Dice Rolled: {state}</h4>);
+
+//if using the export default syntax - you must import without {}, as it is default, not named export
+// export default ({state, listeners}) => (<h4>Dice Rolled: {state}</h4>);
+
+
 
 // const DiceRolledCounter = ({count}) => (<h4>Dice Rolled: {count}</h4>)
 

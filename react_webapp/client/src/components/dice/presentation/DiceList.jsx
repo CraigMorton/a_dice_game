@@ -1,4 +1,24 @@
-var React = require('react');
+import React from "react";
+
+const DiceList = ({
+diceCount,
+listener
+})=>{
+  var diceElementsArray = [];
+  for (let i = 0; i < diceCount; i++){
+    diceElementsArray.push( (<li id={i} key={i} onClick={listener}>die #{i+1}</li>) )
+  }
+  return(
+    <ul>
+    {diceElementsArray}
+    </ul>
+  )
+}
+
+export {DiceList};
+
+
+// var React = require('react');
 
 // var DiceList = React.createClass({
 //   contextTypes: {store: React.PropTypes.object},
@@ -20,27 +40,8 @@ var React = require('react');
 //   }
 // })
 
-const DiceList = ({
-state,
-listeners
-})=>{
-  var diceElementsArray = [];
-  for (let i = 0; i < state; i++){
-    diceElementsArray.push( (<li key={i}>die #{i+1}</li>) )
-  }
-  // let ARRAY = diceElementsArray.map( (item, i) => {
-  //   return(<li key={i}>die #{i+1}</li>)) }
-  // console.log(ARRAY);
-
-  return(
-    <ul>
-    {diceElementsArray}
-    </ul>
-  )
-}
-
 
 // store={store.getState()}
 // listeners={listeners}
 
-module.exports = DiceList;
+// module.exports = DiceList;

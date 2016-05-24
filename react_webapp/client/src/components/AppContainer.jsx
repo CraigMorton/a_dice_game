@@ -1,9 +1,71 @@
 import React from "react";
-// import DiceContainer from "./dice/DiceContainer.jsx";
-// import StatsContainer from "./stats/StatsContainer.jsx";
 import {CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListContainer, SettingsContainer, SharedResourceContainer, StatsContainer} from "../exports.js";
+// import {CurrentPlayerContainer} from "./current_player/CurrentPlayerContainer.jsx";
+// import {DiceContainer} from "./dice/DiceContainer.jsx";
+// import {PlayerInfoContainer} from "./player_info/PlayerInfoContainer.jsx";
+// import {PlayerListContainer} from "./player_list/PlayerListContainer.jsx";
+// import {SettingsContainer} from "./settings/SettingsContainer.jsx";
+// import {SharedResourceContainer} from "./shared_resource/SharedResourceContainer.jsx";
+// import {StatsContainer} from "./stats/StatsContainer.jsx";
+
+const AppContainer = ({
+  state,
+  listeners
+}) => (
+  <div>
+        <DiceContainer state={state.dice} listeners={listeners.dice}/>
+        <StatsContainer state={state.stats} listeners={listeners.stats}/>
+      </div>
+    )
+
+export {AppContainer};
+
+// es5 version for demonstration purposes:
+// //////////////////////////////////////////////////// //////////////////////////////////////////////////
+
+// This may not actually work as I believe named parameters may be necessary to allow react to pass in the props to your pure function style react component successfully, however I'm not certain
+
+// var React = require("react");
+// var DiceContainer = require("./dice/DiceContainer.jsx").DiceContainer;
+
+// var AppContainer = function(state, listeners){
+//   return (
+//     <div>
+//         <DiceContainer state={state.dice} listeners={listeners.dice}/>
+//     </div>
+//   )
+// }
+
+// module.exports = AppContainer;
+
+
+// React full class version for demonstration purposes:
+// //////////////////////////////////////////////////// //////////////////////////////////////////////////
+
+// var React = require('react');
+// var DiceContainer = require("./dice/DiceContainer.jsx").DiceContainer;
+
+// var AppContainer = React.createClass({
+//   render: function(){
+//     return(
+//       <div>
+//         <DiceContainer state={this.props.state.dice} listeners={this.props.listeners.dice}/>
+//       </div>
+//     );
+//   }
+// })
+
+// module.exports = AppContainer;
+
+//examples above - old versions for notation purposes below.
+// //////////////////////////////////////////////////// //////////////////////////////////////////////////
+// //////////////////////////////////////////////////// //////////////////////////////////////////////////
+// //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
 // import api from "../models/jsonApiHelper";
+
+// import DiceContainer from "./dice/DiceContainer.jsx";
+// import StatsContainer from "./stats/StatsContainer.jsx";
 
 // problems with import/exports in ../exports.js made me try this - turns out this wasn't the problem:
 // const CurrentPlayerContainer = require("../exports.js").CurrentPlayerContainer;
@@ -56,16 +118,6 @@ import {CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListCo
 //   }
 // })
 
-const AppContainer = ({
-  store,
-  state,
-  listeners
-})=>(
-      <div>
-        <DiceContainer state={state.dice} listeners={listeners.dice}/>
-        <StatsContainer state={state.stats} listeners={listeners.stats}/>
-      </div>
-    )
 
 // AppContainer.contextTypes = {
 //   store: React.PropTypes.object
@@ -82,8 +134,6 @@ const AppContainer = ({
 //   </div>
 //   )
 // }
-
-export {AppContainer};
 // module.exports = AppContainer;
 
 // const listeners = {

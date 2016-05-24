@@ -1,6 +1,26 @@
-var React = require('react');
-var DiceList = require("./presentation/DiceList.jsx");
-const RollDiceButton = require("./presentation/RollDiceButton.jsx");
+import React from "react";
+import {DiceList} from "./presentation/DiceList.jsx";
+import {RollDiceButton} from "./presentation/RollDiceButton.jsx";
+
+const DiceContainer = ({
+  state,
+  listeners
+})=>(
+  <div>
+  <DiceList
+  diceCount={state.numDice}
+  listener={listeners.onDieClick}
+  />
+  <RollDiceButton
+  listener={listeners.onRollDiceClick}
+  label={"Roll Dice"}
+  enabled={true}
+  />
+  </div>
+  )
+
+export {DiceContainer};
+
 
 // var DiceContainer = React.createClass({
 //   contextTypes: {store: React.PropTypes.object},
@@ -27,22 +47,6 @@ const RollDiceButton = require("./presentation/RollDiceButton.jsx");
 //   }
 // })
 
-const DiceContainer = ({
-  state,
-  listeners
-})=>(
-  <div>
-  <DiceList
-  state={state.numDice}
-  // listeners={this.props.listeners}
-  />
-  <RollDiceButton
-  onClick={listeners.onRollDiceClick}
-  label={"Roll Dice"}
-  enabled={true}
-  />
-  </div>
-  )
+
 
 // module.exports = DiceContainer;
-export {DiceContainer};

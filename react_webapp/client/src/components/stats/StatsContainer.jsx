@@ -1,7 +1,17 @@
-var React = require('react');
-// const DiceRolledCounter = require("./presentation/DiceRolledCounter");
+import React from "react";
+import {DiceRolledCounter} from "./presentation/DiceRolledCounter.jsx";
 
-import DiceRolledCounter from "./presentation/DiceRolledCounter";
+const StatsContainer = ({
+  state,
+  listeners
+})=>(
+<div>
+  <DiceRolledCounter state={state.diceRolledCount}/>
+</div>
+  )
+
+export {StatsContainer};
+
 
 // var StatsContainer = React.createClass({
 //   contextTypes: {store: React.PropTypes.object},
@@ -18,14 +28,4 @@ import DiceRolledCounter from "./presentation/DiceRolledCounter";
 //   }
 // })
 
-const StatsContainer = ({
-  state,
-  listeners
-})=>(
-<div>
-  <DiceRolledCounter state={state.diceRolledCount}/>
-</div>
-  )
-
 // module.exports = StatsContainer;
-export {StatsContainer};

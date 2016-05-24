@@ -1,9 +1,9 @@
-Making a multi-player dice and hidden-role game to learn Redux, React, socket.io and syncing game data from multiple user-clients to a central db server.
+####Making a multi-player dice and hidden-role game to learn Redux, React, socket.io and syncing game data from multiple user-clients to a central db server.
 
-React & Redux design decisions
+#####React & Redux design decisions
 
 
-I am using render-only "dumb" components (expressed as simple functions) for presentation _and_ container component on the React side of things.
+I am using render-only "dumb" components (expressed as simple functions) for presentation _and_ container components on the React side of things.
 
 
 I am using Redux purely for the store, action and reducer system. I am not using any react-redux modules. I am not using the connect() function to generate container components, as I want to structure my app with pure functions as react components, and I want each container components to contain an entire section of the react frontend, and get its data from its own field of the Redux store.

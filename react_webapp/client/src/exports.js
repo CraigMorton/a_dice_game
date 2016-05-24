@@ -1,4 +1,4 @@
-// import {createClass} from "react";
+import {createClass} from "react";
 
 ////////////////////////////////////////////////////////////////
 // THIS EXPORTS AGGREGATION FILE ONLY WORKS IF:               //
@@ -30,29 +30,17 @@ export {apiGet, apiPost, jsonApiHelper};
 //// REDUX
 
 // NEED reducers to create store - can't route them through this file or createStore gets called too early
-
 // REDUCERS
 // import {currentPlayerReducer} from "./reducers/currentPlayerReducer.js";
-// export {currentPlayerReducer};
-// module.exports.currentPlayerReducer = currentPlayerReducer;
 // import {diceReducer} from "./reducers/diceReducer.js";
-// export {diceReducer};
-// module.exports.diceReducer = diceReducer;
 // import {playerInfoReducer} from "./reducers/playerInfoReducer.js";
-// export {playerInfoReducer};
-// module.exports.playerInfoReducer = playerInfoReducer;
 // import {playerListReducer} from "./reducers/playerListReducer.js";
-// export {playerListReducer};
-// module.exports.playerListReducer = playerListReducer;
 // import {settingsReducer} from "./reducers/settingsReducer.js";
-// export {settingsReducer};
-// module.exports.settingsReducer = settingsReducer;
 // import {sharedResourceReducer} from "./reducers/sharedResourceReducer.js";
-// export {sharedResourceReducer};
-// module.exports.sharedResourceReducer = sharedResourceReducer;
 // import {statsReducer} from "./reducers/statsReducer.js";
-// export {statsReducer};
-// module.exports.statsReducer = statsReducer;
+
+// export {currentPlayerReducer, diceReducer, playerInfoReducer, playerListReducer, settingsReducer, sharedResourceReducer, statsReducer};
+
 // const reducers = {
 //   currentPlayer: currentPlayerReducer,
 //   dice: diceReducer,
@@ -67,15 +55,7 @@ export {apiGet, apiPost, jsonApiHelper};
 ////REDUX
 //STORE
 import store from "./store.js";
-// export {store as store};
 export {store};
-// export {store as store} from "./store.js"
-// console.log(store);
-// module.exports.store = store;
-// export {store} from "./store.js";
-
-
-
 
 // LISTENERS
 import {currentPlayerListeners} from "./listeners/currentPlayerListeners.js";
@@ -87,7 +67,12 @@ import {sharedResourceListeners} from "./listeners/sharedResourceListeners.js";
 import {statsListeners} from "./listeners/statsListeners.js";
 
 const listeners = {
+  currentPlayer: currentPlayerListeners,
   dice: diceListeners,
+  playerInfo: playerInfoListeners,
+  playerList: playerListListeners,
+  settings: settingsListeners,
+  sharedResource: sharedResourceListeners,
   stats: statsListeners
 }
 
@@ -97,25 +82,17 @@ export {listeners};
 
 //// REACT
 // CONTAINER COMPONENTS
+
 import {AppContainer} from "./components/AppContainer.jsx";
-export {AppContainer};
-// export {AppContainer: AppContainer};
 import {CurrentPlayerContainer} from "./components/current_player/CurrentPlayerContainer.jsx";
-module.exports.CurrentPlayerContainer = CurrentPlayerContainer;
 import {DiceContainer} from "./components/dice/DiceContainer.jsx";
-// console.log(DiceContainer);
-export {DiceContainer};
-// module.exports.DiceContainer = DiceContainer;
 import {PlayerInfoContainer} from "./components/player_info/PlayerInfoContainer.jsx";
-module.exports.PlayerInfoContainer = PlayerInfoContainer;
 import {PlayerListContainer} from "./components/player_list/PlayerListContainer.jsx";
-module.exports.PlayerListContainer = PlayerListContainer;
 import {SettingsContainer} from "./components/settings/SettingsContainer.jsx";
-module.exports.SettingsContainer = SettingsContainer;
 import {SharedResourceContainer} from "./components/shared_resource/SharedResourceContainer.jsx";
-module.exports.SharedResourceContainer = SharedResourceContainer;
 import {StatsContainer} from "./components/stats/StatsContainer.jsx";
-module.exports.StatsContainer = StatsContainer;
+
+export {AppContainer, CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListContainer, SettingsContainer, SharedResourceContainer, StatsContainer};
 
 
 //// REACT
