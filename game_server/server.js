@@ -72,7 +72,8 @@ app.post('/api/game_data', function(req,res){
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('game_data');
     // game_object_title = "game_session-" + req.body.gameData.createdAt
-    collection.insert({"game_session": req.body.gameData});
+    // collection.insert({"game_session": req.body.gameData});
+    collection.insert({"game_data": req.body.gameData});
     res.status(200).end();
     db.close();
   });
