@@ -18,25 +18,38 @@ const reducer = combineReducers({
 })
 
 const initialState = {
-  currentPlayer:{},
+  currentPlayer:{player_id: 0, health: 8, sharedResource: 0, buckshotAvailable: true},
   dice: {
+    rollsRemaining: 3,
     numDice: 5,
-    diceArray:[{saved: false}, {saved: false}, {saved: false}, {saved: false}, {saved: false}]
+    canRoll: true,
+    diceArray:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}]
   },
   playerInfo: {},
-  playerList: {},
+  playerList: [{player_id: 1, health: 8, sharedResource: 0}, {player_id: 2, health: 8, sharedResource: 0}, {player_id: 3, health: 8, sharedResource: 0}, {player_id: 4, health: 8, sharedResource: 0}, {player_id: 5, health: 8, sharedResource: 0}, {player_id: 6, health: 8, sharedResource: 0}, {player_id: 6, health: 8, sharedResource: 0}],
   settings: {},
   sharedResource: {
     current: 9,
     max: 9
   },
   stats: {
-    diceRolledCount: 0
+    gameWinner: null,
+    diceRolledCount: 0,
+    turnsPlayedCount: 0
   }
 };
+
 const store = createStore(reducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+
 export {store};
+
 export default store;
+
+
+
+// console.log(combineReducers);
+
+
 // CAN'T IMPORT ANYTHING VIA exports.js IN store.js
 
 // import {currentPlayerReducer, diceReducer, playerInfoReducer, playerListReducer, settingsReducer, sharedResourceReducer, statsReducer} from "./exports.js";

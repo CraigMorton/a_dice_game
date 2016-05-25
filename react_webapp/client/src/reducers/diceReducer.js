@@ -1,38 +1,50 @@
-const diceReducer = (state = {}, action)=>{
+// import {store} from "../exports.js"
+// VM128289:1311 Uncaught Error: Reducers may not dispatch actions.
 
+const diceReducer = (state = {}, action)=>{
   const mapActionStringToActionDispatchCall = {
     // "@@INIT": () => state,
-    "SAVE_DIE": () => {
-      console.log("action object in reducer:", action);
-
-      // assuming 2 is the index specified for testing purposes
-      console.log(action.id);
-
-      const dieArrayItem = state.diceArray[2];
-
-      const newDieArrayItem = Object.assign({}, dieArrayItem, {saved: true});
-
+    "TOGGLE_DIE_SAVE_STATUS": () => {
+      // console.log("action object in reducer:", action);
+      const index = action.id;
       const diceArray = state.diceArray;
-
-      const newDiceArraySLICED = diceArray.slice(0, 2).concat(diceArray.slice(2 + 1));
-
-      const newDiceArray = [...diceArray.slice(0, 2), ...diceArray.slice(2 + 1)];
-
+      // console.log("dice array:", diceArray);
+      const die = diceArray[index];
+      // console.log("to save/unsave:", die);
+      const newDie = Object.assign({}, die, {saved: !die.saved});
+      // console.log("with toggled save status:", newDie);
+      // // const newDiceArraySLICED = diceArray.slice(0, index).concat(newDie).concat(diceArray.slice(index + 1));
+      // // console.log(newDiceArraySLICED);
+      // console.log("array pre-target element:", ...diceArray.slice(0, index));
+      // console.log("target element:", newDie);
+      // console.log(diceArray);
+      // console.log(index);
+      // console.log(index+1);
+      // console.log(diceArray.slice(index+1));
+      // console.log("array post-target element:", ...diceArray.slice(index + 1));
+      // THAT was a long bug-hunt - the action.id, coming from the e.target.id (which isn't really the react way to get the id - maybe refs would be better)
+      // was coming straight from the HTML, even though I put a Number into the HTML element, it become a string in HTML land. "1"+ 1 = 11     diceArray.slice(11) = []. 
+      const newDiceArray = [ ...diceArray.slice(0, index), newDie, ...diceArray.slice((index + 1)) ];
+      // for (let i = 0; i < newDiceArray.length; i++){
+      //   console.log("new array item " + i +" :", newDiceArray[i]);
+      // }
+      console.log("new array after save toggle:", newDiceArray);
       return Object.assign({}, state, {diceArray: newDiceArray})
+    },
+    "ROLL_UNSAVED_DICE": () => {
+      let newArray = state.diceArray.map((die)=>{
+        if (die.saved) return die;
+        let value = Math.floor(Math.random()*6 + 1)
+        return Object.assign({}, die, {value: value})
+      })
+      return Object.assign({}, state, {diceArray: newArray});
+    },
+    "DECREMENT_ROLLS_REMAINING": () => {
+      if (state.rollsRemaining > 1) return Object.assign({}, state, {rollsRemaining: state.rollsRemaining - 1});
+      if (state.rollsRemaining <= 1) return Object.assign({}, state, {rollsRemaining: 0, canRoll: false});
     }
-    // },
-    // "INCREMENT_DICE_ROLLED_COUNTER": () => {
-    //   // es7 Object.assign replacement with terser sytax using spread operator ...
-    //   // return { {}, state, ...{stats: {diceRolledCount: (state.stats.diceRolledCount + 1)}} }
-    //   return Object.assign({}, state, {stats: {diceRolledCount: (state.diceRolledCount + 1)}})
-    // },
-    // "DECREMENT_DICE_ROLLED_COUNTER": () => {
-    //   return Object.assign({}, state, {stats: {diceRolledCount: state.diceRolledCount - 1}})
-    // }
-  }
-  // if action type is on the reducer function map - this if will pass - and invoke the appropriate function, returning the return value of the appropriate function
+  }// [end] mapActionStringToActionDispatchCall
   if (mapActionStringToActionDispatchCall[action.type]) return mapActionStringToActionDispatchCall[action.type]();
-  // if action type is not on the reducer - the above if statement will fail - and this fallback return statement will run - returning the state as it was passed in, unchanged.
   return state;
 }
 

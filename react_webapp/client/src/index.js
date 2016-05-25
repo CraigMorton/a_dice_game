@@ -1,15 +1,17 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import {AppContainer, store} from "./exports.js";
-import {listeners} from "./exports.js";
-import {apiGet, apiPost} from "./exports.js";
+import {AppContainer, store, listeners, apiGet, apiPost} from "./exports.js";
+import deepFreeze from "deep-freeze";
 
 const render = () => {
+  // these 2 lines for dev only
+  // console.log("STATE:", store.getState());
+  deepFreeze(store.getState())
+
   ReactDOM.render(
-    <AppContainer store={store} state={store.getState()} listeners={listeners}/>,
+    <AppContainer state={store.getState()} listeners={listeners}/>,
     document.getElementById("root")
     );
-  console.log(store.getState());
 }
 
 window.onload = function(){
@@ -17,11 +19,42 @@ window.onload = function(){
   render();
 };
 
+
+// import deepEqual from "deep-equal";
+
+// document.body.onclick = () => {
+//   console.log(savedGame)
+// }
+//   console.log(savedGame);
+//   let equal = deepEqual(savedGame, store.getState(), {strict: true})
+//   console.log("deeply equal?",equal);
+
+// const render = () => {
+//   console.log("STATE:", store.getState());
+//   ReactDOM.render(
+    // <Provider store={store}>
+//     <AppContainer state={store.getState()} listeners={listeners}/>
+    // </Provider>,
+//     document.getElementById("root")
+//     );
+//   // console.log("STATE:", store.getState());
+//   // apiPost("http://localhost:1784/api/game_data", store.getState())
+// }
+
+// window.onload = function(){
+//   store.subscribe(render);
+//   render();
+//   // setInterval(function () {
+//   //   // apiGet("http://localhost:1784/api/game_data", render);
+//   //   fetch("http://localhost:1784/api/game_data")
+//   //     .then((response) => response.json())
+//   //     .then(render)
+//   // }, 1000)
+// };
+
   // console.log("state:", store.getState());
   // console.log("listeners in index.js", listeners);
 
-    // <Provider store={store}>
-    // </Provider>,
 
 // THE `import {AppContainer, store} from "./exports.js";` syntax
 // is utilising "named parameters" (I suspect)

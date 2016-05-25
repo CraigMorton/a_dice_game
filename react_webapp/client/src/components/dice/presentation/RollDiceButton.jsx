@@ -3,14 +3,14 @@ import React from "react";
 const RollDiceButton = ({
 // props here (as named params?)
   listener,
-  enabled,
-  label
+  status,
+  content
 }) => {
-  return(<div>
-<button onClick={listener}
-style={{backgroundColor: enabled ? "green" : "red"}}
->{label}</button>
-</div>)
+  return(
+<button onClick={status ? listener : null}
+style={{backgroundColor: status ? "green" : "red"}}
+>{content}</button>
+)
 }
 
 export {RollDiceButton};

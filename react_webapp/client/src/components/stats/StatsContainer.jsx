@@ -5,10 +5,11 @@ const StatsContainer = ({
   state,
   listeners
 })=>(
-<div>
-  <DiceRolledCounter state={state.diceRolledCount}/>
+<div className="react-container">
+<h5>StatsContainer</h5>
+<DiceRolledCounter state={state.diceRolledCount}/>
 </div>
-  )
+)
 
 export {StatsContainer};
 

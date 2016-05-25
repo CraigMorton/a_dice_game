@@ -1,16 +1,17 @@
 const jsonApiHelper = {
   get: function(url, callback){
-    const request = new XMLHttpRequest;
+    var request = new XMLHttpRequest;
     request.open("GET", url);
-    var dataReturned = null;
+    var dataReturned;
     request.onload = function(){
       if (request.status === 200){
         dataReturned = JSON.parse(request.responseText);
-        if (callback) callback();
+        console.log("data from API:", dataReturned);
+        if (callback) callback(dataReturned);
+        return dataReturned;
       }
     };// [end] request.onload function
     request.send();
-    return dataReturned;
   },
   post: function(url, data, callback){
     var request = new XMLHttpRequest();
@@ -27,6 +28,7 @@ const jsonApiHelper = {
         if (callback) callback();
       }
     }
+    console.log(data);
     request.send( JSON.stringify(data) );
   }
 }

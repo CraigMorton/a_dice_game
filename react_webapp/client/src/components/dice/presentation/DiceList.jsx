@@ -1,13 +1,17 @@
 import React from "react";
 
 const DiceList = ({
-diceCount,
+diceArray,
 listener
-})=>{
-  var diceElementsArray = [];
-  for (let i = 0; i < diceCount; i++){
-    diceElementsArray.push( (<li id={i} key={i} onClick={listener}>die #{i+1}</li>) )
-  }
+}) => {
+  const diceElementsArray = diceArray.map((item, index) => (<li
+    id={index}
+    key={index}
+    value={item.value}
+    onClick={(item.value !== 0) ? listener : null}
+    style={{backgroundColor: (item.saved) ? "cyan" : "orange"}}
+    >die value: {item.value}
+    </li>));
   return(
     <ul>
     {diceElementsArray}

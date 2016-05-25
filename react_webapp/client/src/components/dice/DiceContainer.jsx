@@ -5,19 +5,22 @@ import {RollDiceButton} from "./presentation/RollDiceButton.jsx";
 const DiceContainer = ({
   state,
   listeners
-})=>(
-  <div>
-  <DiceList
-  diceCount={state.numDice}
-  listener={listeners.onDieClick}
-  />
-  <RollDiceButton
-  listener={listeners.onRollDiceClick}
-  label={"Roll Dice"}
-  enabled={true}
-  />
-  </div>
-  )
+}) => {
+  return(
+    <div className="react-container">
+    <h5>DiceContainer</h5>
+    <DiceList
+    diceArray={state.diceArray}
+    listener={listeners.onDieClick}
+    />
+    <RollDiceButton
+    listener={listeners.onRollDiceClick}
+    content={"Roll Dice"}
+    status={state.canRoll}
+    />
+    </div>
+    )
+}
 
 export {DiceContainer};
 

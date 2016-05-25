@@ -8,15 +8,24 @@ import {CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListCo
 // import {SharedResourceContainer} from "./shared_resource/SharedResourceContainer.jsx";
 // import {StatsContainer} from "./stats/StatsContainer.jsx";
 
+// componentWillMount: () => {
+//   // API REQUEST HERE
+// }
+
 const AppContainer = ({
   state,
   listeners
 }) => (
   <div>
-        <DiceContainer state={state.dice} listeners={listeners.dice}/>
-        <StatsContainer state={state.stats} listeners={listeners.stats}/>
-      </div>
-    )
+      <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer}/>
+      <DiceContainer state={state.dice} listeners={listeners.dice}/>
+      <PlayerInfoContainer state={state.playerInfo} listeners={listeners.playerInfo}/>
+      <PlayerListContainer state={state.playerList} listeners={listeners.playerList}/>
+      <SettingsContainer state={state.settings} listeners={listeners.settings}/>
+      <SharedResourceContainer state={state.sharedResource} listeners={listeners.sharedResource}/>
+      <StatsContainer state={state.stats} listeners={listeners.stats}/>
+  </div>
+  )
 
 export {AppContainer};
 
