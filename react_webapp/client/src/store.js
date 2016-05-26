@@ -17,8 +17,37 @@ const reducer = combineReducers({
   stats: statsReducer
 })
 
+console.log(reducer);
+
+const globalReducer = (state = {}, action) => {
+  const globalMapActionStringToActionDispatchCall = {
+    "ROTATE_PLAYERS_FOR_NEXT_TURN": () => {
+      const playerEndingTurn = Object.assign({}, {player_id: state.currentPlayer.player_id, health: state.currentPlayer.health, maxHealth: state.currentPlayer.maxHealth, sharedResource: state.currentPlayer.sharedResource})
+      const playerList = state.playerList.slice();
+      const nextPlayer = Object.assign({}, playerList[0], {buckshotAvailable: true, actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0} })
+      const addTurnEnderToEndOfPlayerList = [...playerList, playerEndingTurn];
+      const removeNewCurrentPlayerFromPlayerList = [...addTurnEnderToEndOfPlayerList.slice(1)]
+      return Object.assign({}, state, {currentPlayer: nextPlayer, playerList: removeNewCurrentPlayerFromPlayerList});
+    },
+    "CHECK_CURRENT_PLAYER_DEAD": () => {
+      if (state.currentPlayer.health <= 0){
+        // reducer(state, {type: "ROTATE_PLAYERS_FOR_NEXT_TURN"})
+        // reducer(state, {type: "REMOVE_DEAD_FROM_PLAYER_LIST"})
+        // reducer(state, {type: "RESET_DICE_FOR_NEXT_TURN"})
+        // reducer(state, {type: "INCREMENT_TURNS_PLAYED_COUNTER"})
+      }
+      return state;
+    }
+  };
+
+  if (globalMapActionStringToActionDispatchCall[action.type]) return globalMapActionStringToActionDispatchCall[action.type]();
+  return reducer(state, action);
+
+}
+
 const initialState = {
-  currentPlayer:{player_id: 0, health: 8, sharedResource: 0, buckshotAvailable: true},
+  currentPlayer: {player_id: 0, health: 1, maxHealth: 8, sharedResource: 0, buckshotAvailable: true, actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0} },
+   // alive: true},
   dice: {
     rollsRemaining: 3,
     numDice: 5,
@@ -26,10 +55,10 @@ const initialState = {
     diceArray:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}]
   },
   playerInfo: {},
-  playerList: [{player_id: 1, health: 8, sharedResource: 0}, {player_id: 2, health: 8, sharedResource: 0}, {player_id: 3, health: 8, sharedResource: 0}, {player_id: 4, health: 8, sharedResource: 0}, {player_id: 5, health: 8, sharedResource: 0}, {player_id: 6, health: 8, sharedResource: 0}, {player_id: 6, health: 8, sharedResource: 0}],
+  playerList: [{player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}],
   settings: {},
   sharedResource: {
-    current: 9,
+    count: 9,
     max: 9
   },
   stats: {
@@ -39,7 +68,8 @@ const initialState = {
   }
 };
 
-const store = createStore(reducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+// const store = createStore(reducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+const store = createStore(globalReducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
 
 export {store};
 

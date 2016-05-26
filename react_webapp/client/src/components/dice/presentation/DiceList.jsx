@@ -2,13 +2,13 @@ import React from "react";
 
 const DiceList = ({
 diceArray,
-listener
+onDieClick
 }) => {
   const diceElementsArray = diceArray.map((item, index) => (<li
     id={index}
     key={index}
     value={item.value}
-    onClick={(item.value !== 0) ? listener : null}
+    onClick={(item.value !== 0 && item.value !== 5) ? onDieClick : null}
     style={{backgroundColor: (item.saved) ? "cyan" : "orange"}}
     >die value: {item.value}
     </li>));

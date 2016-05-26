@@ -1,12 +1,11 @@
 import {store} from "../exports.js";
 
 const currentPlayerListeners = {
-  onDomEvent: (e)=>{
+  onEndTurnClick: (e)=>{
     // dom element that triggered this event (for grabbing id etc.):
-    e.target
-    console.log(e.target);
-    // or e.currentTarget
-    store.dispatch({type: "ACTION_NAME-ABC"})
+    store.dispatch({type: "ROTATE_PLAYERS_FOR_NEXT_TURN"});
+    store.dispatch({type: "RESET_DICE_FOR_NEXT_TURN"});
+    store.dispatch({type: "INCREMENT_TURNS_PLAYED_COUNTER"});
   }
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import {DiceRolledCounter} from "./presentation/DiceRolledCounter.jsx";
+import {TurnsPlayedCounter} from "./presentation/TurnsPlayedCounter.jsx";
 
 const StatsContainer = ({
   state,
@@ -8,6 +9,7 @@ const StatsContainer = ({
 <div className="react-container">
 <h5>StatsContainer</h5>
 <DiceRolledCounter state={state.diceRolledCount}/>
+<TurnsPlayedCounter count={state.turnsPlayedCount} />
 </div>
 )
 

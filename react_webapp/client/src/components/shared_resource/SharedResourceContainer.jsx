@@ -7,7 +7,7 @@ const SharedResourceContainer = ({
 }) => (
 <div className="react-container">
 <h5>SharedResourceContainer</h5>
-<SharedResourceList />
+<SharedResourceList count={state.count} maximum={state.max}/>
 </div>
 )
 

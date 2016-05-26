@@ -54,7 +54,7 @@ export {apiGet, apiPost, jsonApiHelper};
 
 ////REDUX
 //STORE
-import store from "./store.js";
+import {store} from "./store.js";
 export {store};
 
 // LISTENERS

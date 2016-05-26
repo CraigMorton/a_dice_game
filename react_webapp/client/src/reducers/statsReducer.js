@@ -1,7 +1,7 @@
 const statsReducer = (state = {}, action)=>{
   const mapActionStringToActionDispatchCall = {
     "INCREMENT_DICE_ROLLED_COUNTER": () => Object.assign({}, state, {diceRolledCount: (state.diceRolledCount + action.count)}),
-    "INCREMENT_TURNS_PLAYED_COUNTER": () => Object.assign({}, state, {turnsPlayedCount: (state.turnsTakenCount + 1)})
+    "INCREMENT_TURNS_PLAYED_COUNTER": () => Object.assign({}, state, {turnsPlayedCount: (state.turnsPlayedCount + 1)})
   }
   // if action type is on the reducer function map - this if will pass - and invoke the appropriate function, returning the return value of the appropriate function
   if (mapActionStringToActionDispatchCall[action.type]) return mapActionStringToActionDispatchCall[action.type]();

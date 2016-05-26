@@ -11,12 +11,13 @@ const DiceContainer = ({
     <h5>DiceContainer</h5>
     <DiceList
     diceArray={state.diceArray}
-    listener={listeners.onDieClick}
+    onDieClick={listeners.onDieClick}
+    onDieValueChange={listeners.onDieValueChange}
     />
     <RollDiceButton
     listener={listeners.onRollDiceClick}
-    content={"Roll Dice"}
-    status={state.canRoll}
+    label={"Roll Dice"}
+    enabled={state.canRoll}
     />
     </div>
     )

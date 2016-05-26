@@ -17,7 +17,7 @@ const AppContainer = ({
   listeners
 }) => (
   <div>
-      <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer}/>
+      <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer} canRoll={state.dice.canRoll}/>
       <DiceContainer state={state.dice} listeners={listeners.dice}/>
       <PlayerInfoContainer state={state.playerInfo} listeners={listeners.playerInfo}/>
       <PlayerListContainer state={state.playerList} listeners={listeners.playerList}/>

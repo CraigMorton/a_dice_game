@@ -1,15 +1,14 @@
 import React from "react";
-import {SharedResourceListItem} from "./SharedResourceListItem.jsx";
+// import {SharedResourceListItem} from "./SharedResourceListItem.jsx";
 
 const SharedResourceList = ({
-  listener,
-  status,
-  content
+  count,
+  maximum
 }) => {
   return(
     <div>
-    <text>SharedResourceList</text>
-    <SharedResourceListItem />
+    <text>Arrow Pile: {count}</text>
+    <p>Maximum: {maximum}</p>
     </div>)
 }
 
