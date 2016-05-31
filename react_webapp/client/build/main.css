@@ -1,5 +1,10 @@
 .react-container {
   border: 1px black solid;
-  display: inline-flex;
+  display: inline-flex;,
+  
+}
+
+* {
+  padding: 2px;
 }
 

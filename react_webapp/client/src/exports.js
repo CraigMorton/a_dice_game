@@ -1,4 +1,4 @@
-import {createClass} from "react";
+// import {createClass} from "react";
 
 ////////////////////////////////////////////////////////////////
 // THIS EXPORTS AGGREGATION FILE ONLY WORKS IF:               //
@@ -6,6 +6,9 @@ import {createClass} from "react";
 // and import in usage files using:                           //
 // const importName = require("PATH").exportName;             //
 // es5 syntax (although const is fine)                        //
+////////////////////////////////////////////////////////////////
+// MATCH `import { namedImport }` TO `export { constName }`   //
+// DO NOT MIX UP DEFAULT AND NAMED IMPORTS / exports          //
 ////////////////////////////////////////////////////////////////
 
 //// JS

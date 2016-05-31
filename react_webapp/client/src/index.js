@@ -5,8 +5,9 @@ import deepFreeze from "deep-freeze";
 
 const render = () => {
   // these 2 lines for dev only
-  // console.log("STATE:", store.getState());
+  console.log("STATE:", store.getState());
   deepFreeze(store.getState())
+  // ^ DEV MODE ONLY ^ ////////////////////
 
   ReactDOM.render(
     <AppContainer state={store.getState()} listeners={listeners}/>,
@@ -15,6 +16,9 @@ const render = () => {
 }
 
 window.onload = function(){
+
+
+
   store.subscribe(render);
   render();
 };

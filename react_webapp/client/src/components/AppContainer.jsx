@@ -15,7 +15,8 @@ import {CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListCo
 const AppContainer = ({
   state,
   listeners
-}) => (
+}) => {
+  return (
   <div>
       <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer} canRoll={state.dice.canRoll}/>
       <DiceContainer state={state.dice} listeners={listeners.dice}/>
@@ -26,13 +27,14 @@ const AppContainer = ({
       <StatsContainer state={state.stats} listeners={listeners.stats}/>
   </div>
   )
+}
 
 export {AppContainer};
 
-// es5 version for demonstration purposes:
-// //////////////////////////////////////////////////// //////////////////////////////////////////////////
+// // es5 version for demonstration purposes:
+// // //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
-// This may not actually work as I believe named parameters may be necessary to allow react to pass in the props to your pure function style react component successfully, however I'm not certain
+// // This may not actually work as I believe named parameters may be necessary to allow react to pass in the props to your pure function style react component successfully, however I'm not certain
 
 // var React = require("react");
 // var DiceContainer = require("./dice/DiceContainer.jsx").DiceContainer;
@@ -48,8 +50,8 @@ export {AppContainer};
 // module.exports = AppContainer;
 
 
-// React full class version for demonstration purposes:
-// //////////////////////////////////////////////////// //////////////////////////////////////////////////
+// // React full class version for demonstration purposes:
+// // //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
 // var React = require('react');
 // var DiceContainer = require("./dice/DiceContainer.jsx").DiceContainer;

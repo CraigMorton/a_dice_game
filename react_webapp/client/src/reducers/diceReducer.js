@@ -1,7 +1,7 @@
 // import {store} from "../exports.js"
 // VM128289:1311 Uncaught Error: Reducers may not dispatch actions.
 
-const diceReducer = (state = {}, action)=>{
+const diceReducer = (state = {}, action) => {
   const mapActionStringToActionDispatchCall = {
     // "@@INIT": () => state,
     "TOGGLE_DIE_SAVE_STATUS": () => {
@@ -35,7 +35,8 @@ const diceReducer = (state = {}, action)=>{
       let newArray = state.diceArray.map((die)=>{
         if (die.saved) return die;
         let value = Math.floor(Math.random()*6 + 1)
-        return Object.assign({}, die, {value: value})
+        // return Object.assign({}, die, {value: value})
+        return { ...die, value: value}
       })
       return Object.assign({}, state, {diceArray: newArray});
     },
