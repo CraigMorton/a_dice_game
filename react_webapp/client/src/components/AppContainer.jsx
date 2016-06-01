@@ -1,35 +1,23 @@
 import React from "react";
-import {CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListContainer, SettingsContainer, SharedResourceContainer, StatsContainer} from "../exports.js";
-// import {CurrentPlayerContainer} from "./current_player/CurrentPlayerContainer.jsx";
-// import {DiceContainer} from "./dice/DiceContainer.jsx";
-// import {PlayerInfoContainer} from "./player_info/PlayerInfoContainer.jsx";
-// import {PlayerListContainer} from "./player_list/PlayerListContainer.jsx";
-// import {SettingsContainer} from "./settings/SettingsContainer.jsx";
-// import {SharedResourceContainer} from "./shared_resource/SharedResourceContainer.jsx";
-// import {StatsContainer} from "./stats/StatsContainer.jsx";
+import {CurrentPlayerContainer, GameInfoContainer, PlayerListContainer, SettingsContainer} from "../exports.js";
 
 // componentWillMount: () => {
 //   // API REQUEST HERE
 // }
 
-const AppContainer = ({
+export default ({
   state,
   listeners
 }) => {
   return (
   <div>
-      <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer} canRoll={state.dice.canRoll}/>
-      <DiceContainer state={state.dice} listeners={listeners.dice}/>
-      <PlayerInfoContainer state={state.playerInfo} listeners={listeners.playerInfo}/>
+      <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer} playerListItem={state.playerList[0]}/>
+      <GameInfoContainer state={state.gameInfo} listeners={listeners.gameInfo}/>
       <PlayerListContainer state={state.playerList} listeners={listeners.playerList}/>
       <SettingsContainer state={state.settings} listeners={listeners.settings}/>
-      <SharedResourceContainer state={state.sharedResource} listeners={listeners.sharedResource}/>
-      <StatsContainer state={state.stats} listeners={listeners.stats}/>
   </div>
   )
 }
-
-export {AppContainer};
 
 // // es5 version for demonstration purposes:
 // // //////////////////////////////////////////////////// //////////////////////////////////////////////////

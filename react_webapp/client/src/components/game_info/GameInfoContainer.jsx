@@ -1,19 +1,19 @@
 import React from "react";
 import {DiceRolledCounter} from "./presentation/DiceRolledCounter.jsx";
 import {TurnsPlayedCounter} from "./presentation/TurnsPlayedCounter.jsx";
+import {SharedResource} from "./presentation/SharedResource.jsx";
 
-const StatsContainer = ({
+export default ({
   state,
   listeners
 })=>(
 <div className="react-container">
-<h5>StatsContainer</h5>
-<DiceRolledCounter state={state.diceRolledCount}/>
+<h5>GameInfoContainer</h5>
+<DiceRolledCounter state={state.diceRolledCount} />
 <TurnsPlayedCounter count={state.turnsPlayedCount} />
+<SharedResource count={state.sharedResource.count} maximum={state.sharedResource.max} />
 </div>
 )
-
-export {StatsContainer};
 
 
 // var StatsContainer = React.createClass({

@@ -57,26 +57,20 @@ export {apiGet, apiPost, jsonApiHelper};
 
 ////REDUX
 //STORE
-import {store} from "./store.js";
+import store from "./store.js";
 export {store};
 
 // LISTENERS
-import {currentPlayerListeners} from "./listeners/currentPlayerListeners.js";
-import {diceListeners} from "./listeners/diceListeners.js";
-import {playerInfoListeners} from "./listeners/playerInfoListeners.js";
+import currentPlayerListeners from "./listeners/currentPlayerListeners.js";
+import gameInfoListeners from "./listeners/gameInfoListeners.js";
 import {playerListListeners} from "./listeners/playerListListeners.js";
 import {settingsListeners} from "./listeners/settingsListeners.js";
-import {sharedResourceListeners} from "./listeners/sharedResourceListeners.js";
-import {statsListeners} from "./listeners/statsListeners.js";
 
 const listeners = {
   currentPlayer: currentPlayerListeners,
-  dice: diceListeners,
-  playerInfo: playerInfoListeners,
+  gameInfo: gameInfoListeners,
   playerList: playerListListeners,
-  settings: settingsListeners,
-  sharedResource: sharedResourceListeners,
-  stats: statsListeners
+  settings: settingsListeners
 }
 
 export {listeners};
@@ -86,16 +80,16 @@ export {listeners};
 //// REACT
 // CONTAINER COMPONENTS
 
-import {AppContainer} from "./components/AppContainer.jsx";
-import {CurrentPlayerContainer} from "./components/current_player/CurrentPlayerContainer.jsx";
-import {DiceContainer} from "./components/dice/DiceContainer.jsx";
-import {PlayerInfoContainer} from "./components/player_info/PlayerInfoContainer.jsx";
-import {PlayerListContainer} from "./components/player_list/PlayerListContainer.jsx";
-import {SettingsContainer} from "./components/settings/SettingsContainer.jsx";
-import {SharedResourceContainer} from "./components/shared_resource/SharedResourceContainer.jsx";
-import {StatsContainer} from "./components/stats/StatsContainer.jsx";
+import AppContainer from "./components/AppContainer.jsx";
+import CurrentPlayerContainer from "./components/current_player/CurrentPlayerContainer.jsx";
+import GameInfoContainer from "./components/game_info/GameInfoContainer.jsx";
+import PlayerListContainer from "./components/player_list/PlayerListContainer.jsx";
+import SettingsContainer from "./components/settings/SettingsContainer.jsx";
+// import {DiceContainer} from "./components/dice/DiceContainer.jsx";
+// import {PlayerInfoContainer} from "./components/player_info/PlayerInfoContainer.jsx";
+// import {SharedResourceContainer} from "./components/shared_resource/SharedResourceContainer.jsx";
 
-export {AppContainer, CurrentPlayerContainer, DiceContainer, PlayerInfoContainer, PlayerListContainer, SettingsContainer, SharedResourceContainer, StatsContainer};
+export {AppContainer, CurrentPlayerContainer, GameInfoContainer, PlayerListContainer, SettingsContainer};
 
 
 //// REACT

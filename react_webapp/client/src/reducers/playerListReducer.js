@@ -1,11 +1,14 @@
-const playerListReducer = (state = {}, action)=>{
+const playerListReducer = (state = [], action)=>{
   const mapActionStringToActionDispatchCall = {
-    "PLAYER_LIST_TAKE_SHARED_RESOURCE_DAMAGE": () => {
+    "GIVE_SHARED_RESOURCE_TO_ACTIVE_PLAYER": () => {
+      return [ { ...state[0], sharedResource: state[0].sharedResource + 1 }, ...state.slice(1) ]
+    },
+    "DEAL_SHARED_RESOURCE_DAMAGE": () => {
       const updatedHealthPlayerList = state.map((item, index) => {
         if (item.sharedResource > 0) return Object.assign({}, item, {sharedResource: 0, health: (item.health - item.sharedResource)})
         return item;
       })
-      console.log("player list take arrow damage: list: ", updatedHealthPlayerList);
+      // console.log("player list take arrow damage: list: ", updatedHealthPlayerList);
       return Object.assign([], state, updatedHealthPlayerList);
     },
     "REMOVE_DEAD_FROM_PLAYER_LIST": () => {

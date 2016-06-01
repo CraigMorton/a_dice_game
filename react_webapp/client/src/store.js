@@ -1,54 +1,37 @@
 import {createStore, combineReducers} from "redux";
-import {currentPlayerReducer} from "./reducers/currentPlayerReducer.js";
-import {diceReducer} from "./reducers/diceReducer.js";
-// import {playerInfoReducer} from "./reducers/playerInfoReducer.js";
+import currentPlayerReducer from "./reducers/currentPlayerReducer.js";
+import gameInfoReducer from "./reducers/gameInfoReducer.js";
 import {playerListReducer} from "./reducers/playerListReducer.js";
 import {settingsReducer} from "./reducers/settingsReducer.js";
-import {sharedResourceReducer} from "./reducers/sharedResourceReducer.js";
-import {statsReducer} from "./reducers/statsReducer.js";
+import globalReducer from "./reducers/globalReducer.js";
 
 const combinedReducer = combineReducers({
   currentPlayer: currentPlayerReducer,
-  dice: diceReducer,
-  // playerInfo: playerInfoReducer,
+  gameInfo: gameInfoReducer,
   playerList: playerListReducer,
   settings: settingsReducer,
-  sharedResource: sharedResourceReducer,
-  stats: statsReducer
 })
 
-console.log(combinedReducer);
-
 const initialState = {
-  currentPlayer: {minigunAvailable: true, actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0} },
-   // alive: true},
-  dice: {
+  currentPlayer: {
+    dice: [{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
+    actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
+    minigunAvailable: true,
     rollsRemaining: 3,
-    numDice: 5,
-    canRoll: true,
-    diceArray:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}]
+    canRoll: true
   },
-  // playerInfo: {},
-  playerList: [{player_id: 0, health: 1, maxHealth: 8, sharedResource: 0}, {player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}],
-  settings: {},
-  sharedResource: {
-    count: 9,
-    max: 9
-  },
-  stats: {
+  gameInfo: {
+    sharedResource: {count: 9, max: 9},
     gameWinner: null,
     diceRolledCount: 0,
     turnsPlayedCount: 0
-  }
+  },
+  playerList: [{player_id: 0, health: 1, maxHealth: 8, sharedResource: 0}, {player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}],
+  settings: {numDice: 5, sharedResourceMax: 9}
 };
 
-// const store = createStore(reducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
-const store = createStore(globalReducer, initialState, (window.devToolsExtension) ? window.devToolsExtension() : undefined);
-
-export {store};
-
-export default store;
-
+export default createStore(combinedReducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+// export default store = createStore(globalReducer, initialState, (window.devToolsExtension) ? window.devToolsExtension() : undefined);
 
 
 // console.log(combineReducers);

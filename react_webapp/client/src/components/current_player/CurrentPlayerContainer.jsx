@@ -3,22 +3,32 @@ import {CurrentPlayerActionCounters} from "./presentation/CurrentPlayerActionCou
 import {CurrentPlayerHealth} from "./presentation/CurrentPlayerHealth.jsx";
 import {CurrentPlayerSharedResource} from "./presentation/CurrentPlayerSharedResource.jsx";
 import {EndTurnButton} from "./presentation/EndTurnButton.jsx";
+import {DiceList} from "./presentation/DiceList.jsx";
+import {RollDiceButton} from "./presentation/RollDiceButton.jsx";
 
-const CurrentPlayerContainer = ({
+export default ({
   state,
   listeners,
-  canRoll
+  playerListItem
 }) => {
   return(
     <div className="react-container">
     <h5>CurrentPlayerContainer</h5>
-    <text>Player ID: {state.player_id}</text>
-    <CurrentPlayerHealth health={state.health} maxHealth={state.maxHealth}/>
-    <CurrentPlayerSharedResource count={state.sharedResource} />
+    <text>Player ID: {playerListItem.player_id}</text>
+    <CurrentPlayerHealth health={playerListItem.health} maxHealth={playerListItem.maxHealth}/>
+    <CurrentPlayerSharedResource count={playerListItem.sharedResource} />
     <CurrentPlayerActionCounters actions={state.actionCounters}/>
-    <EndTurnButton label={"End Turn"} enabled={!canRoll} listener={listeners.onEndTurnClick}/>
+    <DiceList
+    diceArray={state.dice}
+    onDieClick={listeners.onDieClick}
+    onDieValueChange={listeners.onDieValueChange}
+    />
+    <RollDiceButton
+    listener={listeners.onRollDiceClick}
+    label={"Roll Dice"}
+    enabled={state.canRoll}
+    />
+    <EndTurnButton label={"End Turn"} enabled={!state.canRoll} listener={listeners.onEndTurnClick}/>
     </div>
     )
 }
-
-export {CurrentPlayerContainer};

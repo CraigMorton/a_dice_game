@@ -1,6 +1,6 @@
 import {store} from "../exports.js";
 
-const sharedResourceListeners = {
+export default {
   onDomEvent: (e)=>{
     // dom element that triggered this event (for grabbing id etc.):
     e.target
@@ -9,5 +9,3 @@ const sharedResourceListeners = {
     store.dispatch({type: "ACTION_NAME-ABC"})
   }
 }
-
-export {sharedResourceListeners};

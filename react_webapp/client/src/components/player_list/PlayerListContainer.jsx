@@ -1,7 +1,7 @@
 import React from "react";
 // import {PresentationComponent} from "./presentation/PresentationComponent.jsx";
 
-const PlayerListContainer = ({
+export default ({
   state,
   listeners
 }) => {
@@ -12,5 +12,3 @@ const PlayerListContainer = ({
     </div>
     )
 }
-
-export {PlayerListContainer};

@@ -1,7 +1,6 @@
 import React from "react";
-// import {SharedResourceListItem} from "./SharedResourceListItem.jsx";
 
-const SharedResourceList = ({
+const SharedResource = ({
   count,
   maximum
 }) => {
@@ -12,4 +11,4 @@ const SharedResourceList = ({
     </div>)
 }
 
-export {SharedResourceList};
+export {SharedResource};
