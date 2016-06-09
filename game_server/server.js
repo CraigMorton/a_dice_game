@@ -9,12 +9,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var url = 'mongodb://localhost:27017/a_dice_game';
 
-
 app.use(function(req, res, next){
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
 
 app.get('/api/game_sessions', function(req,res){
   MongoClient.connect(url, function(err, db) {

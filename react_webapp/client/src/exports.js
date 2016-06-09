@@ -1,38 +1,11 @@
-// import {createClass} from "react";
-
-////////////////////////////////////////////////////////////////
-// THIS EXPORTS AGGREGATION FILE ONLY WORKS IF:               //
-// You export from this file using es5 module.exports syntax, //
-// and import in usage files using:                           //
-// const importName = require("PATH").exportName;             //
-// es5 syntax (although const is fine)                        //
-////////////////////////////////////////////////////////////////
-// MATCH `import { namedImport }` TO `export { constName }`   //
-// DO NOT MIX UP DEFAULT AND NAMED IMPORTS / exports          //
-////////////////////////////////////////////////////////////////
-
 //// JS
 // MODELS
 import {jsonApiHelper,apiGet, apiPost} from "./models/jsonApiHelper.js";
 export {apiGet, apiPost, jsonApiHelper};
 
-
-
-
-
-
-
-
-
-// module.exports.apiGet = apiGet;
-// module.exports.apiPost = apiPost;
-// module.exports.jsonApiHelper = jsonApiHelper;
-
-// export {apiGet, apiPost, jsonApiHelper};
-
 //// REDUX
 
-// NEED reducers to create store - can't route them through this file or createStore gets called too early
+// need reducers to create store - can't import/export them through this file as createStore seems to get called in store.js before this file is run
 // REDUCERS
 // import {currentPlayerReducer} from "./reducers/currentPlayerReducer.js";
 // import {diceReducer} from "./reducers/diceReducer.js";
@@ -63,8 +36,8 @@ export {store};
 // LISTENERS
 import currentPlayerListeners from "./listeners/currentPlayerListeners.js";
 import gameInfoListeners from "./listeners/gameInfoListeners.js";
-import {playerListListeners} from "./listeners/playerListListeners.js";
-import {settingsListeners} from "./listeners/settingsListeners.js";
+import playerListListeners from "./listeners/playerListListeners.js";
+import settingsListeners from "./listeners/settingsListeners.js";
 
 const listeners = {
   currentPlayer: currentPlayerListeners,
@@ -75,7 +48,34 @@ const listeners = {
 
 export {listeners};
 
+// DISPATCHERS
+// current player dispatchers
+import rollDiceDispatcher from "./action_dispatchers/current_player_dispatchers/rollDiceDispatcher.js";
 
+export {rollDiceDispatcher};
+
+// game info dispatchers
+
+// player list dispatchers
+
+// settings dispatchers
+
+// ACTION CREATORS
+// current player action creators
+import rollDiceAction from "./action_creators/current_player_action_creators/rollDiceAction.js";
+// import moveSavedDiceToArrayStartAction from "./action_creators/current_player_action_creators/moveSavedDiceToArrayStartAction.js";
+import decrementRollsRemainingAction from "./action_creators/current_player_action_creators/decrementRollsRemainingAction.js";
+
+export {rollDiceAction, decrementRollsRemainingAction};
+
+// game info action creators
+import incrementDiceRolledAction from "./action_creators/game_info_action_creators/incrementDiceRolledAction.js";
+
+export {incrementDiceRolledAction};
+
+// player list action creators
+
+// settings action creators
 
 //// REACT
 // CONTAINER COMPONENTS

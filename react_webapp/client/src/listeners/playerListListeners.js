@@ -10,4 +10,4 @@ const playerListListeners = {
   }
 }
 
-export {playerListListeners};
+export default playerListListeners;

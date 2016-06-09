@@ -1,12 +1,15 @@
 import {store} from "../exports.js";
+import {rollDiceDispatcher} from "../exports.js"; 
 
 export default {
   onRollDiceClick: ()=>{
-    const state = store.getState().currentPlayer;
-    let diceToRoll = 0
-    store.getState().currentPlayer.dice.forEach((die)=>{
-      if (!die.saved) diceToRoll++;
-    })
+
+
+    // const state = store.getState().currentPlayer;
+    // let diceToRoll = 0
+    // store.getState().currentPlayer.dice.forEach((die)=>{
+    //   if (!die.saved) diceToRoll++;
+    // })
     // for (let i = 0; i < diceToRoll; i++){
     // }
     // //////////////////////////////////////////////////
@@ -15,9 +18,15 @@ export default {
     // //////////////////////////////////////////////////
 
     // //////////////////////////////////////////////////
-    store.dispatch({type: "ROLL_UNSAVED_DICE"});
-    store.dispatch({type: "DECREMENT_ROLLS_REMAINING"});
-    store.dispatch({type: "INCREMENT_DICE_ROLLED_COUNTER", count: diceToRoll});
+    // store.dispatch({type: "ROLL_UNSAVED_DICE"});
+    // store.dispatch({type: "DECREMENT_ROLLS_REMAINING"});
+    // store.dispatch({type: "INCREMENT_DICE_ROLLED_COUNTER", count: diceToRoll});
+    
+
+    rollDiceDispatcher();
+
+    // //////////////////////////////////////////////////// //////////////////////////////////////////////////
+
     store.dispatch({type: "AUTO_SAVE_GRENADES"});
     store.dispatch({type: "THREE_GRENADES_DISABLE_ROLL"})
     store.dispatch({type: "UPDATE_ACTION_COUNTERS", diceValuesArray: store.getState().currentPlayer.dice.map((dieObject) => dieObject.value)});

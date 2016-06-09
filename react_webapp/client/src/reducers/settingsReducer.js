@@ -7,4 +7,4 @@ const settingsReducer = (state = {}, action)=>{
   return state;
 }
 
-export {settingsReducer};
+export default settingsReducer;

@@ -1,5 +1,58 @@
+// const currentPlayerReducer = 
+// export default 
 export default (state = {}, action)=>{
   const actionToNewState = {
+    "ROLL_DICE": () => {
+      let newDice = []
+      for (let i = 0; i < state.dice.length; i++){
+        let saved;
+        for (let j=0; j < action.savedDiceIds.length; j++){
+          if (i === action.savedDiceIds[j]) saved = true;
+        }
+
+        if (saved){
+          newDice[i] = state.dice[i];
+        } else {
+          let value = Math.floor(Math.random()*6 + 1)
+          let autoSave = false
+          // if (value === 5) autoSave = true
+          newDice[i] = {value: value, saved: autoSave} 
+        }
+      }
+      return {...state, dice: newDice}
+    },
+    "DECREMENT_ROLLS_REMAINING": () => {
+      if (state.rollsRemaining > 1) return Object.assign({}, state, {rollsRemaining: state.rollsRemaining - 1});
+      if (state.rollsRemaining <= 1) return Object.assign({}, state, {rollsRemaining: 0, canRoll: false});
+    },
+    // ABOVE ACTIONS HAVE BEEN REFACTORED INTO ACTION CREATORS AND DISPATCHERS
+    // //////////////////////////////////////////////////// //////////////////////////////////////////////////
+    // "ROLL_UNSAVED_DICE": () => {
+
+    //   let newArray = state.dice.map((die)=>{
+    //     if (die.saved) return die;
+    //     let value = Math.floor(Math.random()*6 + 1)
+    //     // return Object.assign({}, die, {value: value})
+    //     return { ...die, value: value}
+    //   })
+    //   return Object.assign({}, state, {dice: newArray});
+    // },
+    // "MOVE_SAVED_DICE_TO_DICE_ARRAY_START": () => {
+    //   let newDice = state.dice.slice();
+    //   for (let i = 0; i < action.savedDiceIds.length; i++){
+    //     newDice[i] = state.dice[savedDiceIds[i]]
+    //     newDice[savedDiceIds[i]] = state.dice[i]
+    //   }
+    //   return {...state, {dice: newDice}}
+    // },
+    // could integrate this action into "ROLL_DICE" action
+    "AUTO_SAVE_GRENADES": () => {
+      const newArray = state.dice.map((item, index)=>{
+        if (item.value === 5) return {...item, saved: true};
+        return item;
+      })
+      return Object.assign({}, state, {dice: newArray})
+    },
     "TOGGLE_DIE_SAVE_STATUS": () => {
       const index = action.id;
       const diceArray = state.dice;
@@ -7,26 +60,6 @@ export default (state = {}, action)=>{
       const newDie = Object.assign({}, die, {saved: !die.saved});
       const newDiceArray = [ ...diceArray.slice(0, index), newDie, ...diceArray.slice((index + 1)) ];
       return Object.assign({}, state, {dice: newDiceArray})
-    },
-    "ROLL_UNSAVED_DICE": () => {
-      let newArray = state.dice.map((die)=>{
-        if (die.saved) return die;
-        let value = Math.floor(Math.random()*6 + 1)
-        // return Object.assign({}, die, {value: value})
-        return { ...die, value: value}
-      })
-      return Object.assign({}, state, {dice: newArray});
-    },
-    "DECREMENT_ROLLS_REMAINING": () => {
-      if (state.rollsRemaining > 1) return Object.assign({}, state, {rollsRemaining: state.rollsRemaining - 1});
-      if (state.rollsRemaining <= 1) return Object.assign({}, state, {rollsRemaining: 0, canRoll: false});
-    },
-    "AUTO_SAVE_GRENADES": () => {
-      const newArray = state.dice.map((item, index)=>{
-        if (item.value === 5) return {...item, saved: true};
-        return item;
-      })
-      return Object.assign({}, state, {dice: newArray})
     },
     "THREE_GRENADES_DISABLE_ROLL": () => {
       let grenadeCount = 0;
@@ -63,6 +96,11 @@ export default (state = {}, action)=>{
   if (actionToNewState[action.type]) return actionToNewState[action.type]();
   return state;
 }
+
+// module.exports = currentPlayerReducer;
+
+
+
 
 // import {store} from "../exports.js"
 // VM128289:1311 Uncaught Error: Reducers may not dispatch actions.

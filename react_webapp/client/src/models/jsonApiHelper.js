@@ -19,13 +19,16 @@ const jsonApiHelper = {
     request.setRequestHeader("Content-Type", "application/json");
     request.onload = function(){
       if(request.status === 200){
+        console.log("POST responseText:", request.responseText);
         var responseData = JSON.parse(request.responseText);
         // in store - wrap the dispatch call in a function that is passed to this method as 3rd arg - callback func
         // this.store.dispatch({
         //   type:'ACTION_NAME',
         //   stateDataName: responseData
         // })
-        if (callback) callback();
+        console.log("POST JSONparsed responseText:", responseData);
+        if (callback) callback(responseData);
+        return responseData
       }
     }
     console.log(data);

@@ -6,11 +6,12 @@
   "scripts": {
     "start": "webpack -w",
     "build": "webpack",
-    "test": "mocha specs"
+    "test": "mocha specs --recursive --compilers js:babel-core/register"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-es2015-destructuring": "^6.9.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
@@ -19,12 +20,13 @@
     "babel-preset-stage-2": "^6.5.0",
     "chai": "^3.5.0",
     "deep-freeze": "0.0.1",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.3",
     "redux-devtools": "^3.3.1",
     "webpack": "^1.12.14"
   },
   "dependencies": {
     "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.9.0",
     "deep-equal": "^1.0.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",

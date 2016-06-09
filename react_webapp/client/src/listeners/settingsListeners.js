@@ -10,4 +10,4 @@ const settingsListeners = {
   }
 }
 
-export {settingsListeners};
+export default settingsListeners;

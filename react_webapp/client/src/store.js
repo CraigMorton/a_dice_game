@@ -1,8 +1,8 @@
 import {createStore, combineReducers} from "redux";
 import currentPlayerReducer from "./reducers/currentPlayerReducer.js";
 import gameInfoReducer from "./reducers/gameInfoReducer.js";
-import {playerListReducer} from "./reducers/playerListReducer.js";
-import {settingsReducer} from "./reducers/settingsReducer.js";
+import playerListReducer from "./reducers/playerListReducer.js";
+import settingsReducer from "./reducers/settingsReducer.js";
 import globalReducer from "./reducers/globalReducer.js";
 
 const combinedReducer = combineReducers({

@@ -40,4 +40,4 @@ const playerListReducer = (state = [], action)=>{
   return state;
 }
 
-export {playerListReducer};
+export default playerListReducer;
