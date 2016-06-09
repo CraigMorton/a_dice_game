@@ -20,15 +20,15 @@ describe("current player Reducer", function(){
     expect(currentPlayerReducer(state, action)).to.deep.equal({rollsRemaining: 2});
   });
 
-  // it("should save grenades (die value 5)", function(){
-  //   let action = {type: "AUTO_SAVE_GRENADES"}
-  //   let state = {
-  //       dice: [{value: 5, saved: false}, {value: 5, saved: false}]
-  //   }
-  //   expect(currentPlayerReducer(state, action)).to.deep.equal({
-  //       dice: [{value: 5, saved: true}, {value: 5, saved: true}]
-  //   });
-  // });
+  it("should save grenades (die value 5)", function(){
+    let action = {type: "AUTO_SAVE_GRENADES"}
+    let state = {
+        dice: [{value: 5, saved: false}, {value: 5, saved: false}]
+    }
+    expect(currentPlayerReducer(state, action)).to.deep.equal({
+        dice: [{value: 5, saved: true}, {value: 5, saved: true}]
+    });
+  });
 
   it("should disable roll when 3x grenades are rolled", function(){
     let action = {type: "THREE_GRENADES_DISABLE_ROLL"};

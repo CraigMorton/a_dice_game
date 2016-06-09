@@ -22,12 +22,12 @@ export default {
     // store.dispatch({type: "DECREMENT_ROLLS_REMAINING"});
     // store.dispatch({type: "INCREMENT_DICE_ROLLED_COUNTER", count: diceToRoll});
     
+    // store.dispatch({type: "AUTO_SAVE_GRENADES"});
 
     rollDiceDispatcher();
 
     // //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
-    store.dispatch({type: "AUTO_SAVE_GRENADES"});
     store.dispatch({type: "THREE_GRENADES_DISABLE_ROLL"})
     store.dispatch({type: "UPDATE_ACTION_COUNTERS", diceValuesArray: store.getState().currentPlayer.dice.map((dieObject) => dieObject.value)});
     store.dispatch({type: "THREE_GRENADES_DAMAGE"});

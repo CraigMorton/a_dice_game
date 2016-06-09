@@ -25,6 +25,13 @@ export default (state = {}, action)=>{
       if (state.rollsRemaining > 1) return Object.assign({}, state, {rollsRemaining: state.rollsRemaining - 1});
       if (state.rollsRemaining <= 1) return Object.assign({}, state, {rollsRemaining: 0, canRoll: false});
     },
+    "AUTO_SAVE_GRENADES": () => {
+      const newArray = state.dice.map((item, index)=>{
+        if (item.value === action.value) return {...item, saved: true};
+        return item;
+      })
+      return {...state, dice: newArray }
+    },
     // ABOVE ACTIONS HAVE BEEN REFACTORED INTO ACTION CREATORS AND DISPATCHERS
     // //////////////////////////////////////////////////// //////////////////////////////////////////////////
     // "ROLL_UNSAVED_DICE": () => {
@@ -46,13 +53,6 @@ export default (state = {}, action)=>{
     //   return {...state, {dice: newDice}}
     // },
     // could integrate this action into "ROLL_DICE" action
-    "AUTO_SAVE_GRENADES": () => {
-      const newArray = state.dice.map((item, index)=>{
-        if (item.value === 5) return {...item, saved: true};
-        return item;
-      })
-      return Object.assign({}, state, {dice: newArray})
-    },
     "TOGGLE_DIE_SAVE_STATUS": () => {
       const index = action.id;
       const diceArray = state.dice;

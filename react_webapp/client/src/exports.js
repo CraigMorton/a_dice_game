@@ -65,8 +65,9 @@ export {rollDiceDispatcher};
 import rollDiceAction from "./action_creators/current_player_action_creators/rollDiceAction.js";
 // import moveSavedDiceToArrayStartAction from "./action_creators/current_player_action_creators/moveSavedDiceToArrayStartAction.js";
 import decrementRollsRemainingAction from "./action_creators/current_player_action_creators/decrementRollsRemainingAction.js";
+import autoSaveGrenadesAction from "./action_creators/current_player_action_creators/autoSaveGrenadesAction.js";
 
-export {rollDiceAction, decrementRollsRemainingAction};
+export {rollDiceAction, decrementRollsRemainingAction, autoSaveGrenadesAction};
 
 // game info action creators
 import incrementDiceRolledAction from "./action_creators/game_info_action_creators/incrementDiceRolledAction.js";
