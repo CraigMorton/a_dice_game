@@ -36,8 +36,8 @@ const currentPlayerReducer = (state = defaultState, action)=>{
       return {...state, dice: newArray};
     },
     "DECREMENT_ROLLS_REMAINING": () => {
-      if (state.rollsRemaining > 1) return Object.assign({}, state, {rollsRemaining: state.rollsRemaining - 1});
-      if (state.rollsRemaining <= 1) return Object.assign({}, state, {rollsRemaining: 0, canRoll: false});
+      if (state.rollsRemaining > 1) return {...state, rollsRemaining: state.rollsRemaining - 1};
+      if (state.rollsRemaining <= 1) return {...state, rollsRemaining: 0, canRoll: false};
     },
     "AUTO_SAVE_GRENADES": () => {
       // could integrate this action into "ROLL_DICE" action
