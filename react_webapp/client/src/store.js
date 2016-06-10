@@ -3,16 +3,10 @@ import currentPlayerReducer from "./reducers/currentPlayerReducer.js";
 import gameInfoReducer from "./reducers/gameInfoReducer.js";
 import playerListReducer from "./reducers/playerListReducer.js";
 import settingsReducer from "./reducers/settingsReducer.js";
-import globalReducer from "./reducers/globalReducer.js";
+import globalReducerCreator from "./reducers/globalReducerCreator.js";
 
-const combinedReducer = combineReducers({
-  currentPlayer: currentPlayerReducer,
-  gameInfo: gameInfoReducer,
-  playerList: playerListReducer,
-  settings: settingsReducer,
-})
-
-const initialState = {
+const defaultState = {
+  // implemented as default parameters on each reducer
   currentPlayer: {
     dice: [{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
     actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
@@ -30,7 +24,18 @@ const initialState = {
   settings: {numDice: 5, sharedResourceMax: 9}
 };
 
-export default createStore(combinedReducer, initialState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+const previousState = undefined // get this from database when saving game is implemented
+
+const combinedReducer = combineReducers({
+  currentPlayer: currentPlayerReducer,
+  gameInfo: gameInfoReducer,
+  playerList: playerListReducer,
+  settings: settingsReducer,
+})
+
+const globalReducer = globalReducerCreator(combinedReducer);
+
+export default createStore(globalReducer, previousState, window.devToolsExtension ? window.devToolsExtension() : undefined);
 // export default store = createStore(globalReducer, initialState, (window.devToolsExtension) ? window.devToolsExtension() : undefined);
 
 
