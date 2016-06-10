@@ -26,11 +26,22 @@ export default (state = {}, action)=>{
       if (state.rollsRemaining <= 1) return Object.assign({}, state, {rollsRemaining: 0, canRoll: false});
     },
     "AUTO_SAVE_GRENADES": () => {
+      // could integrate this action into "ROLL_DICE" action
       const newArray = state.dice.map((item, index)=>{
         if (item.value === action.value) return {...item, saved: true};
         return item;
       })
       return {...state, dice: newArray }
+    },
+    "THREE_GRENADES_DISABLE_ROLL": () => {
+      let grenadeCount = 0;
+      state.dice.forEach((item) => {
+        if (item.value === 5) grenadeCount++
+      })
+      if (grenadeCount >= 3){
+        return {...state, canRoll: false, rollsRemaining: 0};
+      }
+      return state;
     },
     // ABOVE ACTIONS HAVE BEEN REFACTORED INTO ACTION CREATORS AND DISPATCHERS
     // //////////////////////////////////////////////////// //////////////////////////////////////////////////
@@ -52,22 +63,13 @@ export default (state = {}, action)=>{
     //   }
     //   return {...state, {dice: newDice}}
     // },
-    // could integrate this action into "ROLL_DICE" action
     "TOGGLE_DIE_SAVE_STATUS": () => {
       const index = action.id;
-      const diceArray = state.dice;
+      const diceArray = state.dice.slice();
       const die = diceArray[index];
-      const newDie = Object.assign({}, die, {saved: !die.saved});
+      const newDie = {...die, saved: !die.saved};
       const newDiceArray = [ ...diceArray.slice(0, index), newDie, ...diceArray.slice((index + 1)) ];
-      return Object.assign({}, state, {dice: newDiceArray})
-    },
-    "THREE_GRENADES_DISABLE_ROLL": () => {
-      let grenadeCount = 0;
-      state.dice.forEach((item) => {if (item.value === 5) grenadeCount++})
-      if (grenadeCount >= 3){
-        return Object.assign({}, state, {canRoll: false, rollsRemaining: 0});
-      }
-      return state;
+      return {...state, dice: newDiceArray};
     },
     "RESET_CURRENT_PLAYER_FOR_NEXT_TURN": () => {
       return Object.assign({}, state, {

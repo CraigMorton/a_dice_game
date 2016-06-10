@@ -1,5 +1,5 @@
 import {store} from "../../exports.js"
-import {rollDiceAction, incrementDiceRolledAction, decrementRollsRemainingAction, autoSaveGrenadesAction} from "../../exports.js";
+import {rollDiceAction, incrementDiceRolledAction, decrementRollsRemainingAction, autoSaveGrenadesAction, threeGrenadesDisableRollAction} from "../../exports.js";
 
 const rollDiceDispatcher = () => {
   const state = store.getState().currentPlayer;
@@ -17,7 +17,9 @@ const rollDiceDispatcher = () => {
   store.dispatch(rollDiceAction(savedDiceIds))
   store.dispatch(incrementDiceRolledAction(numDiceToRoll))
   store.dispatch(decrementRollsRemainingAction())
+  
   store.dispatch(autoSaveGrenadesAction())
+  store.dispatch(threeGrenadesDisableRollAction())
 
   const dead = (store.getState().playerList[0].health <= 0);
   if (dead){

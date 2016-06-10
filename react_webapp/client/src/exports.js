@@ -51,8 +51,9 @@ export {listeners};
 // DISPATCHERS
 // current player dispatchers
 import rollDiceDispatcher from "./action_dispatchers/current_player_dispatchers/rollDiceDispatcher.js";
+import saveDieDispatcher from "./action_dispatchers/current_player_dispatchers/saveDieDispatcher.js";
 
-export {rollDiceDispatcher};
+export {rollDiceDispatcher, saveDieDispatcher};
 
 // game info dispatchers
 
@@ -66,8 +67,11 @@ import rollDiceAction from "./action_creators/current_player_action_creators/rol
 // import moveSavedDiceToArrayStartAction from "./action_creators/current_player_action_creators/moveSavedDiceToArrayStartAction.js";
 import decrementRollsRemainingAction from "./action_creators/current_player_action_creators/decrementRollsRemainingAction.js";
 import autoSaveGrenadesAction from "./action_creators/current_player_action_creators/autoSaveGrenadesAction.js";
+import threeGrenadesDisableRollAction from "./action_creators/current_player_action_creators/threeGrenadesDisableRollAction.js";
 
-export {rollDiceAction, decrementRollsRemainingAction, autoSaveGrenadesAction};
+import toggleDieSaveStatusAction from "./action_creators/current_player_action_creators/toggleDieSaveStatusAction.js";
+
+export {rollDiceAction, decrementRollsRemainingAction, autoSaveGrenadesAction, threeGrenadesDisableRollAction, toggleDieSaveStatusAction};
 
 // game info action creators
 import incrementDiceRolledAction from "./action_creators/game_info_action_creators/incrementDiceRolledAction.js";

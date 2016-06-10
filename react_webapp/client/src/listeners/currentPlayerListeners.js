@@ -1,8 +1,8 @@
 import {store} from "../exports.js";
-import {rollDiceDispatcher} from "../exports.js"; 
+import {rollDiceDispatcher, saveDieDispatcher} from "../exports.js"; 
 
 export default {
-  onRollDiceClick: ()=>{
+  onRollDiceClick: (e)=>{
 
 
     // const state = store.getState().currentPlayer;
@@ -23,12 +23,12 @@ export default {
     // store.dispatch({type: "INCREMENT_DICE_ROLLED_COUNTER", count: diceToRoll});
     
     // store.dispatch({type: "AUTO_SAVE_GRENADES"});
+    // store.dispatch({type: "THREE_GRENADES_DISABLE_ROLL"})
 
     rollDiceDispatcher();
 
     // //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
-    store.dispatch({type: "THREE_GRENADES_DISABLE_ROLL"})
     store.dispatch({type: "UPDATE_ACTION_COUNTERS", diceValuesArray: store.getState().currentPlayer.dice.map((dieObject) => dieObject.value)});
     store.dispatch({type: "THREE_GRENADES_DAMAGE"});
     if (store.getState().playerList[0].health <= 0){
@@ -55,9 +55,9 @@ export default {
     }
   },
   onDieClick: (e)=>{
-    // console.log("event target element id:", e.target.id);
     const id = parseInt(e.target.id);
-    store.dispatch({type: "TOGGLE_DIE_SAVE_STATUS", id: id});
+    saveDieDispatcher(id)
+    // store.dispatch({type: "TOGGLE_DIE_SAVE_STATUS", id: id});
   },
   onEndTurnClick: (e)=>{
     // dom element that triggered this event (for grabbing id etc.):
