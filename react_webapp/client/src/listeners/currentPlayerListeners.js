@@ -24,13 +24,13 @@ export default {
     
     // store.dispatch({type: "AUTO_SAVE_GRENADES"});
     // store.dispatch({type: "THREE_GRENADES_DISABLE_ROLL"})
+    // store.dispatch({type: "UPDATE_ACTION_COUNTERS", diceValuesArray: store.getState().currentPlayer.dice.map((dieObject) => dieObject.value)});
+    // store.dispatch({type: "THREE_GRENADES_DAMAGE"});
 
     rollDiceDispatcher();
 
     // //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
-    store.dispatch({type: "UPDATE_ACTION_COUNTERS", diceValuesArray: store.getState().currentPlayer.dice.map((dieObject) => dieObject.value)});
-    store.dispatch({type: "THREE_GRENADES_DAMAGE"});
     if (store.getState().playerList[0].health <= 0){
       store.dispatch({type: "ROTATE_PLAYERS_FOR_NEXT_TURN"})
       store.dispatch({type: "REMOVE_DEAD_FROM_PLAYER_LIST"})
@@ -60,7 +60,7 @@ export default {
     // store.dispatch({type: "TOGGLE_DIE_SAVE_STATUS", id: id});
   },
   onEndTurnClick: (e)=>{
-    // dom element that triggered this event (for grabbing id etc.):
+    
     store.dispatch({type: "ROTATE_PLAYERS_FOR_NEXT_TURN"});
     store.dispatch({type: "RESET_CURRENT_PLAYER_FOR_NEXT_TURN"});
     store.dispatch({type: "INCREMENT_TURNS_PLAYED_COUNTER"});
