@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom";
 import React from "react";
-import {AppContainer, store, listeners, apiGet, apiPost} from "./exports.js";
+import store from "./store.js";
+import AppContainer from "./components/AppContainer.jsx";
+import {listeners, apiGet, apiPost} from "./exports.js";
 import deepFreeze from "deep-freeze";
 
 const render = () => {

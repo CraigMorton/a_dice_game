@@ -1,6 +1,6 @@
-import {store} from "../exports.js";
+import store from "../store.js";
 
-export default {
+const gameInfoListeners = {
   onDomEvent: (e)=>{
     // dom element that triggered this event (for grabbing id etc.):
     e.target
@@ -9,3 +9,5 @@ export default {
     store.dispatch({type: "ACTION_NAME-ABC"})
   }
 }
+
+export default gameInfoListeners;

@@ -34,8 +34,8 @@ const combinedReducer = combineReducers({
 })
 
 const globalReducer = globalReducerCreator(combinedReducer);
-
-export default createStore(globalReducer, previousState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+const store = createStore(globalReducer, previousState, window.devToolsExtension ? window.devToolsExtension() : undefined);
+export default store;
 // export default store = createStore(globalReducer, initialState, (window.devToolsExtension) ? window.devToolsExtension() : undefined);
 
 

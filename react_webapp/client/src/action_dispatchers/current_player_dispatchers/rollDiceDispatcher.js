@@ -1,7 +1,9 @@
-import {store} from "../../exports.js"
+import store from "../../store.js"
 import {rollDice, decrementRollsRemaining, autoSaveGrenades, threeGrenadesDisableRoll, updateActionCounters, rollUnsavedDice} from "../../action_creators/currentPlayerActions.js";
 import {incrementDiceRolledCounter} from "../../action_creators/gameInfoActions.js";
 import {threeGrenadesDamage} from "../../action_creators/playerListActions.js";
+
+import nextTurnDispatcher from "../global_dispatchers/nextTurnDispatcher.js";
 
 const rollDiceDispatcher = () => {
   // let savedDiceIds = [];
@@ -30,11 +32,12 @@ const rollDiceDispatcher = () => {
     store.dispatch(threeGrenadesDamage(grenadeCount));
   }
 
-
   const dead = (store.getState().playerList[0].health <= 0);
   if (dead){
-    // store.dispatch()
+    nextTurnDispatcher();
   }
+
+
 
 }
 

@@ -30,8 +30,8 @@ export {apiGet, apiPost, jsonApiHelper};
 
 ////REDUX
 //STORE
-import store from "./store.js";
-export {store};
+// import store from "./store.js";
+// export {store};
 
 // LISTENERS
 import currentPlayerListeners from "./listeners/currentPlayerListeners.js";

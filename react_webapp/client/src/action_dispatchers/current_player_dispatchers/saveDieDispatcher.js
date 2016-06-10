@@ -1,4 +1,4 @@
-import {store} from "../../exports.js";
+import store from "../../store.js";
 import {toggleDieSaveStatus} from "../../action_creators/currentPlayerActions.js";
 
 const saveDieDispatcher = (id) => {

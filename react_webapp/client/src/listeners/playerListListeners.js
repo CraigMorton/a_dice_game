@@ -1,4 +1,4 @@
-import {store} from "../exports.js";
+import store from "../store.js";
 
 const playerListListeners = {
   onDomEvent: (e)=>{

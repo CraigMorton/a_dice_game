@@ -66,17 +66,6 @@ const currentPlayerReducer = (state = defaultState, action)=>{
       if (action.grenadeCount >= 3) return {...state, canRoll: false, rollsRemaining: 0};
       return state;
     },
-    // ABOVE ACTIONS HAVE BEEN REFACTORED INTO ACTION CREATORS AND DISPATCHERS
-    // //////////////////////////////////////////////////// //////////////////////////////////////////////////
-
-    // "MOVE_SAVED_DICE_TO_DICE_ARRAY_START": () => {
-    //   let newDice = state.dice.slice();
-    //   for (let i = 0; i < action.savedDiceIds.length; i++){
-    //     newDice[i] = state.dice[savedDiceIds[i]]
-    //     newDice[savedDiceIds[i]] = state.dice[i]
-    //   }
-    //   return {...state, {dice: newDice}}
-    // },
     "RESET_CURRENT_PLAYER": () => {
       return {...state,
         dice:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
