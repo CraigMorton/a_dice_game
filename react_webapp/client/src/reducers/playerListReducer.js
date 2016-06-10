@@ -11,11 +11,11 @@ const playerListReducer = (state = defaultState, action)=>{
     },
     "DEAL_SHARED_RESOURCE_DAMAGE": () => {
       const updatedHealthPlayerList = state.map((player) => {
-        if (player.sharedResource > 0) return Object.assign({}, player, {sharedResource: 0, health: (player.health - player.sharedResource)})
+        if (player.sharedResource > 0) return {...player, sharedResource: 0, health: player.health - player.sharedResource}
         return player;
       })
       // console.log("player list take arrow damage: list: ", updatedHealthPlayerList);
-      return Object.assign([], state, updatedHealthPlayerList);
+      return updatedHealthPlayerList;
     },
     "REMOVE_DEAD_FROM_PLAYER_LIST": () => {
       let deadPlayerIndexes = []
@@ -37,7 +37,7 @@ const playerListReducer = (state = defaultState, action)=>{
       })
       // console.log(updatedPlayerList);
       // If I enter state as the 2nd argument to Object.assign here, the dead player is not removed as they are still in state
-      return Object.assign([], updatedPlayerList);
+      return updatedPlayerList;
     }
 
   }
