@@ -5,39 +5,13 @@ import nextTurnDispatcher from "../action_dispatchers/global_dispatchers/nextTur
 
 export default {
   onRollDiceClick: (e)=>{
-
-
-    // const state = store.getState().currentPlayer;
-    // let diceToRoll = 0
-    // store.getState().currentPlayer.dice.forEach((die)=>{
-    //   if (!die.saved) diceToRoll++;
-    // })
-    // for (let i = 0; i < diceToRoll; i++){
-    // }
-    // //////////////////////////////////////////////////
-    // EXTRACT TO DISPATCHER
-    // EXTRACT FROM DISPATCHER TO ACTION CREATOR
-    // //////////////////////////////////////////////////
-
-    // //////////////////////////////////////////////////
-    // store.dispatch({type: "ROLL_UNSAVED_DICE"});
-    // store.dispatch({type: "DECREMENT_ROLLS_REMAINING"});
-    // store.dispatch({type: "INCREMENT_DICE_ROLLED_COUNTER", count: diceToRoll});
-    
-    // store.dispatch({type: "AUTO_SAVE_GRENADES"});
-    // store.dispatch({type: "THREE_GRENADES_DISABLE_ROLL"})
-    // store.dispatch({type: "UPDATE_ACTION_COUNTERS", diceValuesArray: store.getState().currentPlayer.dice.map((dieObject) => dieObject.value)});
-    // store.dispatch({type: "THREE_GRENADES_DAMAGE"});
-
     rollDiceDispatcher();
     
     // if (store.getState().playerList[0].health <= 0){
     //   nextTurnDispatcher()
     // }
     // rollDiceDispatcher calls nextTurnDispatcher if appropriate
-    // //////////////////////////////////////////////////// //////////////////////////////////////////////////
 
-    
     for (let i = 0; i < store.getState().currentPlayer.actionCounters[6]; i++){
       store.dispatch({type: "REMOVE_SHARED_RESSOURCE_FROM_POOL"})
       store.dispatch({type: "GIVE_SHARED_RESOURCE_TO_ACTIVE_PLAYER"});
@@ -57,12 +31,8 @@ export default {
   onDieClick: (e)=>{
     const id = parseInt(e.target.id);
     saveDieDispatcher(id)
-    // store.dispatch({type: "TOGGLE_DIE_SAVE_STATUS", id: id});
   },
   onEndTurnClick: (e)=>{
     nextTurnDispatcher();
-    // store.dispatch({type: "ROTATE_PLAYERS_FOR_NEXT_TURN"});
-    // store.dispatch({type: "RESET_CURRENT_PLAYER_FOR_NEXT_TURN"});
-    // store.dispatch({type: "INCREMENT_TURNS_PLAYED_COUNTER"});
   }
 }

@@ -14,8 +14,6 @@ const rollDiceDispatcher = () => {
     // if (saved) savedDiceIds.push(i)
     if (!saved) numDiceToRoll++;
   }
-  // store.dispatch(moveSavedDiceToArrayStart(savedDiceIds))
-  // store.dispatch(rollDice(savedDiceIds))
   store.dispatch(rollUnsavedDice());
   store.dispatch(incrementDiceRolledCounter(numDiceToRoll));
   store.dispatch(decrementRollsRemaining());
