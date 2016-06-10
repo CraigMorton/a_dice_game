@@ -8,7 +8,7 @@ import {apiGet, apiPost} from "./models/jsonApiHelper.js";
 import deepFreeze from "deep-freeze";
 
 const render = () => {
-  // these 2 lines for dev only
+  // deep freeze for dev only
   // console.log("STATE:", store.getState());
   deepFreeze(store.getState())
   // ^ DEV ENV ONLY ^ ////////////////////

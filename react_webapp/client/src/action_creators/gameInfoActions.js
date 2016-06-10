@@ -4,3 +4,11 @@ export {incrementDiceRolledCounter};
 const incrementTurnsPlayedCounter = (count = 1) => ({type: "INCREMENT_TURNS_PLAYED_COUNTER", count: count})
 export {incrementTurnsPlayedCounter};
 
+const removeSharedResourceFromPool = (count = 1) => ({type: "REMOVE_SHARED_RESOURCE_FROM_POOL", count})
+export {removeSharedResourceFromPool};
+
+const resetSharedResourcePool = () => ({type: "RESET_SHARED_RESOURCE_POOL"})
+export {resetSharedResourcePool};
+
+
+

@@ -9,3 +9,11 @@ export {rotatePlayerList};
 const removeDeadFromPlayerList = () => ({type: "REMOVE_DEAD_FROM_PLAYER_LIST"})
 export {removeDeadFromPlayerList};
 
+const giveSharedResourceToActivePlayer = (count = 1) => ({type: "GIVE_SHARED_RESOURCE_TO_ACTIVE_PLAYER", count})
+export {giveSharedResourceToActivePlayer};
+
+const dealSharedResourceDamage = () => ({type: "DEAL_SHARED_RESOURCE_DAMAGE"})
+export {dealSharedResourceDamage};
+
+
+
