@@ -1,4 +1,6 @@
-const settingsReducer = (state = {}, action)=>{
+const defaultState = {numDice: 5, sharedResourceMax: 9}
+
+const settingsReducer = (state = defaultState, action)=>{
   const mapActionStringToActionDispatchCall = {
 
   }

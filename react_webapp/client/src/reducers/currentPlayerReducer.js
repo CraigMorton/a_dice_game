@@ -1,25 +1,39 @@
-// const currentPlayerReducer = 
-// export default 
-export default (state = {}, action)=>{
-  const actionToNewState = {
-    "ROLL_DICE": () => {
-      let newDice = []
-      for (let i = 0; i < state.dice.length; i++){
-        let saved;
-        for (let j=0; j < action.savedDiceIds.length; j++){
-          if (i === action.savedDiceIds[j]) saved = true;
-        }
+const defaultState = {
+  dice: [{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
+  actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
+  minigunAvailable: true,
+  rollsRemaining: 3,
+  canRoll: true
+}
 
-        if (saved){
-          newDice[i] = state.dice[i];
-        } else {
-          let value = Math.floor(Math.random()*6 + 1)
-          let autoSave = false
-          // if (value === 5) autoSave = true
-          newDice[i] = {value: value, saved: autoSave} 
-        }
-      }
-      return {...state, dice: newDice}
+const currentPlayerReducer = (state = defaultState, action)=>{
+  const actionToNewState = {
+    // "ROLL_DICE": () => {
+    //   let newDice = []
+    //   for (let i = 0; i < state.dice.length; i++){
+    //     let saved;
+    //     for (let j=0; j < action.savedDiceIds.length; j++){
+    //       if (i === action.savedDiceIds[j]) saved = true;
+    //     }
+
+    //     if (saved){
+    //       newDice[i] = state.dice[i];
+    //     } else {
+    //       let value = Math.floor(Math.random()*6 + 1)
+    //       let autoSave = false
+    //       // if (value === 5) autoSave = true
+    //       newDice[i] = {value: value, saved: autoSave} 
+    //     }
+    //   }
+    //   return {...state, dice: newDice}
+    // },
+    "ROLL_UNSAVED_DICE": () => {
+      let newArray = state.dice.map((die)=>{
+        if (die.saved) return die;
+        let value = Math.floor(Math.random()*6 + 1)
+        return { ...die, value: value}
+      })
+      return {...state, dice: newArray};
     },
     "DECREMENT_ROLLS_REMAINING": () => {
       if (state.rollsRemaining > 1) return Object.assign({}, state, {rollsRemaining: state.rollsRemaining - 1});
@@ -33,36 +47,6 @@ export default (state = {}, action)=>{
       })
       return {...state, dice: newArray }
     },
-    "THREE_GRENADES_DISABLE_ROLL": () => {
-      let grenadeCount = 0;
-      state.dice.forEach((item) => {
-        if (item.value === 5) grenadeCount++
-      })
-      if (grenadeCount >= 3){
-        return {...state, canRoll: false, rollsRemaining: 0};
-      }
-      return state;
-    },
-    // ABOVE ACTIONS HAVE BEEN REFACTORED INTO ACTION CREATORS AND DISPATCHERS
-    // //////////////////////////////////////////////////// //////////////////////////////////////////////////
-    // "ROLL_UNSAVED_DICE": () => {
-
-    //   let newArray = state.dice.map((die)=>{
-    //     if (die.saved) return die;
-    //     let value = Math.floor(Math.random()*6 + 1)
-    //     // return Object.assign({}, die, {value: value})
-    //     return { ...die, value: value}
-    //   })
-    //   return Object.assign({}, state, {dice: newArray});
-    // },
-    // "MOVE_SAVED_DICE_TO_DICE_ARRAY_START": () => {
-    //   let newDice = state.dice.slice();
-    //   for (let i = 0; i < action.savedDiceIds.length; i++){
-    //     newDice[i] = state.dice[savedDiceIds[i]]
-    //     newDice[savedDiceIds[i]] = state.dice[i]
-    //   }
-    //   return {...state, {dice: newDice}}
-    // },
     "TOGGLE_DIE_SAVE_STATUS": () => {
       const index = action.id;
       const diceArray = state.dice.slice();
@@ -71,27 +55,39 @@ export default (state = {}, action)=>{
       const newDiceArray = [ ...diceArray.slice(0, index), newDie, ...diceArray.slice((index + 1)) ];
       return {...state, dice: newDiceArray};
     },
+    "UPDATE_ACTION_COUNTERS": () => {
+      let newActionCounters = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+      state.dice.forEach((die)=>{
+        newActionCounters[die.value]++
+      });
+      return {...state, actionCounters: newActionCounters}
+    },
+    "THREE_GRENADES_DISABLE_ROLL": () => {
+      if (action.grenadeCount >= 3) return {...state, canRoll: false, rollsRemaining: 0};
+      return state;
+    },
+    // ABOVE ACTIONS HAVE BEEN REFACTORED INTO ACTION CREATORS AND DISPATCHERS
+    // //////////////////////////////////////////////////// //////////////////////////////////////////////////
+
+    // "MOVE_SAVED_DICE_TO_DICE_ARRAY_START": () => {
+    //   let newDice = state.dice.slice();
+    //   for (let i = 0; i < action.savedDiceIds.length; i++){
+    //     newDice[i] = state.dice[savedDiceIds[i]]
+    //     newDice[savedDiceIds[i]] = state.dice[i]
+    //   }
+    //   return {...state, {dice: newDice}}
+    // },
     "RESET_CURRENT_PLAYER_FOR_NEXT_TURN": () => {
-      return Object.assign({}, state, {
+      return {...state,
         dice:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
         actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
         minigunAvailable: true,
         rollsRemaining: 3,
         canRoll: true
-      })
-    },
-    "UPDATE_ACTION_COUNTERS": () => {
-      let newActionCounters = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
-      action.diceValuesArray.forEach((item, index)=>{
-        newActionCounters[item]++
-      });
-      return Object.assign({}, state, {actionCounters: newActionCounters})
-    },
-    "THREE_GRENADES_DAMAGE": () => {
-      if (state.actionCounters[5] >= 3){
-        return Object.assign({}, state, {health: state.health - 1})
       }
-      return state;
+      // alternatively:
+      // currentPlayerReducer(undefined)
+      // a bit confusing to see what that's actually doing but it should work, returning the default state
     }
   }
 
@@ -99,6 +95,7 @@ export default (state = {}, action)=>{
   return state;
 }
 
+export default currentPlayerReducer;
 // module.exports = currentPlayerReducer;
 
 
