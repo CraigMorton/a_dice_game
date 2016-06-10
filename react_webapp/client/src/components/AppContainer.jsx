@@ -1,5 +1,9 @@
 import React from "react";
-import {CurrentPlayerContainer, GameInfoContainer, PlayerListContainer, SettingsContainer} from "../exports.js";
+// import {CurrentPlayerContainer, GameInfoContainer, PlayerListContainer, SettingsContainer} from "../exports.js";
+import CurrentPlayerContainer from "./current_player/CurrentPlayerContainer.jsx";
+import GameInfoContainer from "./game_info/GameInfoContainer.jsx";
+import PlayerListContainer from "./player_list/PlayerListContainer.jsx";
+import SettingsContainer from "./settings/SettingsContainer.jsx";
 
 // componentWillMount: () => {
 //   // API REQUEST HERE
