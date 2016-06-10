@@ -1,8 +1,8 @@
 import {store} from "../../exports.js";
-import {toggleDieSaveStatusAction} from "../../exports.js";
+import {toggleDieSaveStatus} from "../../action_creators/currentPlayerActions.js";
 
 const saveDieDispatcher = (id) => {
-  store.dispatch(toggleDieSaveStatusAction(id))
+  store.dispatch(toggleDieSaveStatus(id))
 }
 
 export default saveDieDispatcher;

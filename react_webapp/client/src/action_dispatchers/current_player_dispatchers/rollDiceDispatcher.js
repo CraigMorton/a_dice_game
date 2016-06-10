@@ -1,31 +1,33 @@
 import {store} from "../../exports.js"
-import {rollDiceAction, incrementDiceRolledAction, decrementRollsRemainingAction, autoSaveGrenadesAction, threeGrenadesDisableRollAction, updateActionCountersAction, rollUnsavedDiceAction, threeGrenadesDamageAction} from "../../exports.js";
+import {rollDice, decrementRollsRemaining, autoSaveGrenades, threeGrenadesDisableRoll, updateActionCounters, rollUnsavedDice} from "../../action_creators/currentPlayerActions.js";
+import {incrementDiceRolled} from "../../action_creators/gameInfoActions.js";
+import {threeGrenadesDamage} from "../../action_creators/playerListActions.js";
 
 const rollDiceDispatcher = () => {
-  let state = store.getState().currentPlayer;
-  let numDiceToRoll = 0;
   // let savedDiceIds = [];
-  for (let i = 0; i < state.dice.length; i++){
-    const saved = state.dice[i].saved;
+  let dice = store.getState().currentPlayer.dice;
+  let numDiceToRoll = 0;
+  for (let i = 0; i < dice.length; i++){
+    const saved = dice[i].saved;
     // if (saved) savedDiceIds.push(i)
     if (!saved) numDiceToRoll++;
   }
-  // store.dispatch(moveSavedDiceToArrayStartAction(savedDiceIds))
-  // store.dispatch(rollDiceAction(savedDiceIds))
-  store.dispatch(rollUnsavedDiceAction());
-  store.dispatch(incrementDiceRolledAction(numDiceToRoll));
-  store.dispatch(decrementRollsRemainingAction());
-  store.dispatch(updateActionCountersAction());
-  store.dispatch(autoSaveGrenadesAction());
+  // store.dispatch(moveSavedDiceToArrayStart(savedDiceIds))
+  // store.dispatch(rollDice(savedDiceIds))
+  store.dispatch(rollUnsavedDice());
+  store.dispatch(incrementDiceRolled(numDiceToRoll));
+  store.dispatch(decrementRollsRemaining());
+  store.dispatch(updateActionCounters());
+  store.dispatch(autoSaveGrenades());
 
-  state = store.getState().currentPlayer
+  dice = store.getState().currentPlayer.dice
   let grenadeCount = 0;
-  state.dice.forEach((die) => {
+  dice.forEach((die) => {
     if (die.value === 5) grenadeCount++
   })
   if (grenadeCount >= 3){
-    store.dispatch(threeGrenadesDisableRollAction(grenadeCount))
-    store.dispatch(threeGrenadesDamageAction(grenadeCount));
+    store.dispatch(threeGrenadesDisableRoll(grenadeCount))
+    store.dispatch(threeGrenadesDamage(grenadeCount));
   }
 
 
