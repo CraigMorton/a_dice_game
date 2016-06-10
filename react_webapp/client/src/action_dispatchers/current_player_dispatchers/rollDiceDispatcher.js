@@ -2,7 +2,7 @@ import {store} from "../../exports.js"
 import {rollDiceAction, incrementDiceRolledAction, decrementRollsRemainingAction, autoSaveGrenadesAction, threeGrenadesDisableRollAction, updateActionCountersAction, rollUnsavedDiceAction, threeGrenadesDamageAction} from "../../exports.js";
 
 const rollDiceDispatcher = () => {
-  const state = store.getState().currentPlayer;
+  let state = store.getState().currentPlayer;
   let numDiceToRoll = 0;
   // let savedDiceIds = [];
   for (let i = 0; i < state.dice.length; i++){
@@ -18,6 +18,7 @@ const rollDiceDispatcher = () => {
   store.dispatch(updateActionCountersAction());
   store.dispatch(autoSaveGrenadesAction());
 
+  state = store.getState().currentPlayer
   let grenadeCount = 0;
   state.dice.forEach((die) => {
     if (die.value === 5) grenadeCount++
