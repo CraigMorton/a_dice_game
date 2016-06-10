@@ -8,7 +8,7 @@ const defaultState = {
 const gameInfoReducer = (state = defaultState, action) => {
   const mapActionStringToActionDispatchCall = {
     "INCREMENT_DICE_ROLLED_COUNTER": () => ({ ...state, diceRolledCount: state.diceRolledCount + action.count }),
-    "INCREMENT_TURNS_PLAYED_COUNTER": () => ({...state, turnsPlayedCount: state.turnsPlayedCount + 1 }),
+    "INCREMENT_TURNS_PLAYED_COUNTER": () => ({...state, turnsPlayedCount: state.turnsPlayedCount + action.count }),
     "REMOVE_SHARED_RESSOURCE_FROM_POOL": () => ({...state, count: state.sharedResource.count - 1 }),
     "RESET_SHARED_RESOURCE_POOL": () => ({...state, count: state.sharedResource.max })
   }

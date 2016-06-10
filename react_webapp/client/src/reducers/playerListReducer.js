@@ -6,6 +6,15 @@ const playerListReducer = (state = defaultState, action)=>{
       if (action.grenadeCount >= 3) return [{...state[0], health: state[0].health - 1}, ...state.slice(1)]
       return state;
     },
+    "ROTATE_PLAYER_LIST": () => {
+      if (action.numRotations < 0) throw new Error("Number of times to rotate player list cannot be negative")
+      if (action.numRotations === 0) return state;
+      let newPlayerList = state.slice()
+      for (let i = 0; i < action.numRotations; i++){
+        newPlayerList.push(newPlayerList.shift())
+      }
+      return newPlayerList;
+    },
     "GIVE_SHARED_RESOURCE_TO_ACTIVE_PLAYER": () => {
       return [{...state[0], sharedResource: state[0].sharedResource + 1}, ...state.slice(1)]
     },

@@ -3,3 +3,6 @@ const threeGrenadesDamage = (grenadeCount) => {
 }
 export {threeGrenadesDamage};
 
+const rotatePlayerList = (numRotations = 1) => ({type: "ROTATE_PLAYER_LIST", numRotations: numRotations})
+export {rotatePlayerList};
+

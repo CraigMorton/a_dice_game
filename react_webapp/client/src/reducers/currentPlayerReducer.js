@@ -77,7 +77,7 @@ const currentPlayerReducer = (state = defaultState, action)=>{
     //   }
     //   return {...state, {dice: newDice}}
     // },
-    "RESET_CURRENT_PLAYER_FOR_NEXT_TURN": () => {
+    "RESET_CURRENT_PLAYER": () => {
       return {...state,
         dice:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
         actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
@@ -86,7 +86,7 @@ const currentPlayerReducer = (state = defaultState, action)=>{
         canRoll: true
       }
       // alternatively:
-      // currentPlayerReducer(undefined)
+      // currentPlayerReducer(undefined, {type: undefined})
       // a bit confusing to see what that's actually doing but it should work, returning the default state
     }
   }

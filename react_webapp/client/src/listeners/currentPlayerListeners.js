@@ -1,5 +1,7 @@
 import {store} from "../exports.js";
-import {rollDiceDispatcher, saveDieDispatcher} from "../exports.js"; 
+import rollDiceDispatcher from "../action_dispatchers/current_player_dispatchers/rollDiceDispatcher.js";
+import saveDieDispatcher from "../action_dispatchers/current_player_dispatchers/saveDieDispatcher.js";
+import nextTurnDispatcher from "../action_dispatchers/global_dispatchers/nextTurnDispatcher.js";
 
 export default {
   onRollDiceClick: (e)=>{
@@ -60,9 +62,9 @@ export default {
     // store.dispatch({type: "TOGGLE_DIE_SAVE_STATUS", id: id});
   },
   onEndTurnClick: (e)=>{
-    
-    store.dispatch({type: "ROTATE_PLAYERS_FOR_NEXT_TURN"});
-    store.dispatch({type: "RESET_CURRENT_PLAYER_FOR_NEXT_TURN"});
-    store.dispatch({type: "INCREMENT_TURNS_PLAYED_COUNTER"});
+    nextTurnDispatcher();
+    // store.dispatch({type: "ROTATE_PLAYERS_FOR_NEXT_TURN"});
+    // store.dispatch({type: "RESET_CURRENT_PLAYER_FOR_NEXT_TURN"});
+    // store.dispatch({type: "INCREMENT_TURNS_PLAYED_COUNTER"});
   }
 }

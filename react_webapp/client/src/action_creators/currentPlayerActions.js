@@ -4,14 +4,10 @@ const autoSaveGrenades = () => {
 }
 export {autoSaveGrenades};
 
-const decrementRollsRemaining = () => {
-  return {type: "DECREMENT_ROLLS_REMAINING"}
-}
+const decrementRollsRemaining = () => ({type: "DECREMENT_ROLLS_REMAINING"})
 export {decrementRollsRemaining};
 
-const rollUnsavedDice = () => {
-  return {type: "ROLL_UNSAVED_DICE"};
-}
+const rollUnsavedDice = () => ({type: "ROLL_UNSAVED_DICE"})
 export {rollUnsavedDice};
 
 const threeGrenadesDisableRoll = (grenadeCount) => {
@@ -19,16 +15,14 @@ const threeGrenadesDisableRoll = (grenadeCount) => {
 }
 export {threeGrenadesDisableRoll};
 
-const toggleDieSaveStatus = (id) => {
-  return {type: "TOGGLE_DIE_SAVE_STATUS", id: id}
-}
+const toggleDieSaveStatus = (id) => ({type: "TOGGLE_DIE_SAVE_STATUS", id: id})
 export {toggleDieSaveStatus};
 
-const updateActionCounters = () => {
-  return {type: "UPDATE_ACTION_COUNTERS"}
-}
+const updateActionCounters = () => ({type: "UPDATE_ACTION_COUNTERS"})
 export {updateActionCounters};
 
+const resetCurrentPlayer = () => ({type: "RESET_CURRENT_PLAYER"})
+export {resetCurrentPlayer};
 
 // //////////////////////////////////////////////////
 // OLD ACTIONS - NOT IN USE

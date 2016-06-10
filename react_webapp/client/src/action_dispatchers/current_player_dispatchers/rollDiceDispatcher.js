@@ -1,6 +1,6 @@
 import {store} from "../../exports.js"
 import {rollDice, decrementRollsRemaining, autoSaveGrenades, threeGrenadesDisableRoll, updateActionCounters, rollUnsavedDice} from "../../action_creators/currentPlayerActions.js";
-import {incrementDiceRolled} from "../../action_creators/gameInfoActions.js";
+import {incrementDiceRolledCounter} from "../../action_creators/gameInfoActions.js";
 import {threeGrenadesDamage} from "../../action_creators/playerListActions.js";
 
 const rollDiceDispatcher = () => {
@@ -15,7 +15,7 @@ const rollDiceDispatcher = () => {
   // store.dispatch(moveSavedDiceToArrayStart(savedDiceIds))
   // store.dispatch(rollDice(savedDiceIds))
   store.dispatch(rollUnsavedDice());
-  store.dispatch(incrementDiceRolled(numDiceToRoll));
+  store.dispatch(incrementDiceRolledCounter(numDiceToRoll));
   store.dispatch(decrementRollsRemaining());
   store.dispatch(updateActionCounters());
   store.dispatch(autoSaveGrenades());
