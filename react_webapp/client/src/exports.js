@@ -70,8 +70,11 @@ import autoSaveGrenadesAction from "./action_creators/current_player_action_crea
 import threeGrenadesDisableRollAction from "./action_creators/current_player_action_creators/threeGrenadesDisableRollAction.js";
 
 import toggleDieSaveStatusAction from "./action_creators/current_player_action_creators/toggleDieSaveStatusAction.js";
+import updateActionCountersAction from "./action_creators/current_player_action_creators/updateActionCountersAction.js";
+import rollUnsavedDiceAction from "./action_creators/current_player_action_creators/rollUnsavedDiceAction.js";
 
-export {rollDiceAction, decrementRollsRemainingAction, autoSaveGrenadesAction, threeGrenadesDisableRollAction, toggleDieSaveStatusAction};
+
+export {rollDiceAction, decrementRollsRemainingAction, autoSaveGrenadesAction, threeGrenadesDisableRollAction, toggleDieSaveStatusAction, updateActionCountersAction, rollUnsavedDiceAction};
 
 // game info action creators
 import incrementDiceRolledAction from "./action_creators/game_info_action_creators/incrementDiceRolledAction.js";
@@ -79,6 +82,9 @@ import incrementDiceRolledAction from "./action_creators/game_info_action_creato
 export {incrementDiceRolledAction};
 
 // player list action creators
+import threeGrenadesDamageAction from "./action_creators/player_list_action_creators/threeGrenadesDamageAction.js";
+
+export {threeGrenadesDamageAction};
 
 // settings action creators
 
