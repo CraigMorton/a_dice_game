@@ -6,11 +6,10 @@ const PlayerListContainer = ({
   listeners,
   currentPlayerTargetId
 }) => {
-  let playerListItems = [];
-  for (let i = 0; i < state.length; i++){
-    let isTargetted = (currentPlayerTargetId === state[i].player_id)
-    playerListItems.push(<PlayerListItem id={state[i].player_id} key={state[i].player_id} isTargetted={isTargetted} health={state[i].health} maxHealth={state[i].maxHealth} sharedResource={state[i].sharedResource} listener={listeners.onTargetSelect} onClick={listeners.onTargetSelect}/>)
-  }
+  const playerListItems = state.map((player) => {
+    const isTargetted = (currentPlayerTargetId === player.player_id);
+    return (<PlayerListItem id={player.player_id} key={player.player_id} isTargetted={isTargetted} health={player.health} maxHealth={player.maxHealth} sharedResource={player.sharedResource} listener={listeners.onTargetSelect} onClick={listeners.onTargetSelect}/>)
+  });
   return(
     <div className="react-container">
     <h5>PlayerListContainer</h5>
