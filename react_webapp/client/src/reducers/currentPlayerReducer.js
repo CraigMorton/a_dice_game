@@ -7,7 +7,7 @@ const defaultState = defaultStateGetter().currentPlayer;
 
 const currentPlayerReducer = (state = defaultState, action)=>{
   const actionToNewState = {
-    // "RETURN_STATE_PASSED_IN": () => state,
+    "RETURN_STATE_PASSED_IN": () => state,
     "REFRESH_CURRENT_PLAYER_DEFAULT_STATE": () => {
       const refreshedState = defaultStateGetter().currentPlayer;
       return Object.assign({}, state, refreshedState)
@@ -52,14 +52,16 @@ const currentPlayerReducer = (state = defaultState, action)=>{
       return state;
     },
     "RESET_CURRENT_PLAYER": () => {
-      return {...state,
-        dice:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
-        actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
-        minigunAvailable: true,
-        rollsRemaining: 3,
-        canRoll: true,
-        targettedPlayerId: null
-      }
+      const refreshedState = defaultStateGetter().currentPlayer;
+      return refreshedState;
+      // return {...state,
+      //   dice:[{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
+      //   actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
+      //   minigunAvailable: true,
+      //   rollsRemaining: 3,
+      //   canRoll: true,
+      //   targettedPlayerId: null
+      // }
       // alternatively:
       // return currentPlayerReducer(undefined, {type: "RETURN_STATE_PASSED_IN"})
       // a bit confusing to see what that's actually doing but it should work, returning the default state
