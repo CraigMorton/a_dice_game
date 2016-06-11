@@ -15,5 +15,8 @@ export {giveSharedResourceToActivePlayer};
 const dealSharedResourceDamage = () => ({type: "DEAL_SHARED_RESOURCE_DAMAGE"})
 export {dealSharedResourceDamage};
 
+const toggleTargetPlayer = (id = null) => ({type: "TOGGLE_TARGET_PLAYER", id: id})
+export {toggleTargetPlayer};
+
 
 

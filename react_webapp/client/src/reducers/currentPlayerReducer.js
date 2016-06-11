@@ -9,25 +9,7 @@ const defaultState = {
 
 const currentPlayerReducer = (state = defaultState, action)=>{
   const actionToNewState = {
-    // "ROLL_DICE": () => {
-    //   let newDice = []
-    //   for (let i = 0; i < state.dice.length; i++){
-    //     let saved;
-    //     for (let j=0; j < action.savedDiceIds.length; j++){
-    //       if (i === action.savedDiceIds[j]) saved = true;
-    //     }
-
-    //     if (saved){
-    //       newDice[i] = state.dice[i];
-    //     } else {
-    //       let value = Math.floor(Math.random()*6 + 1)
-    //       let autoSave = false
-    //       // if (value === 5) autoSave = true
-    //       newDice[i] = {value: value, saved: autoSave} 
-    //     }
-    //   }
-    //   return {...state, dice: newDice}
-    // },
+    // "RETURN_STATE_PASSED_IN": () => state,
     "ROLL_UNSAVED_DICE": () => {
       let newArray = state.dice.map((die)=>{
         if (die.saved) return die;
@@ -73,18 +55,21 @@ const currentPlayerReducer = (state = defaultState, action)=>{
         actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
         minigunAvailable: true,
         rollsRemaining: 3,
-        canRoll: true
+        canRoll: true,
+        targettedPlayerId: null
       }
       // alternatively:
-      // currentPlayerReducer(undefined, {type: undefined})
+      // return currentPlayerReducer(undefined, {type: "RETURN_STATE_PASSED_IN"})
       // a bit confusing to see what that's actually doing but it should work, returning the default state
+    },
+    "TOGGLE_TARGET_PLAYER": () => {
+      if (state.targettedPlayerId === action.id) return {...state, targettedPlayerId: null};
+      return {...state, targettedPlayerId: action.id};
     }
   }
-
   if (actionToNewState[action.type]) return actionToNewState[action.type]();
   return state;
 }
-
 export default currentPlayerReducer;
 // module.exports = currentPlayerReducer;
 
