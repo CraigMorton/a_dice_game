@@ -5,6 +5,7 @@ import {CurrentPlayerSharedResource} from "./presentation/CurrentPlayerSharedRes
 import {EndTurnButton} from "./presentation/EndTurnButton.jsx";
 import {DiceList} from "./presentation/DiceList.jsx";
 import {RollDiceButton} from "./presentation/RollDiceButton.jsx";
+import CurrentPlayerTarget from "./presentation/CurrentPlayerTarget.jsx";
 
 export default ({
   state,
@@ -18,6 +19,7 @@ export default ({
     <CurrentPlayerHealth health={playerListItem.health} maxHealth={playerListItem.maxHealth}/>
     <CurrentPlayerSharedResource count={playerListItem.sharedResource} />
     <CurrentPlayerActionCounters actions={state.actionCounters}/>
+    <CurrentPlayerTarget id={state.targettedPlayerId}/>
     <DiceList
     diceArray={state.dice}
     onDieClick={listeners.onDieClick}

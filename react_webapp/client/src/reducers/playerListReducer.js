@@ -39,9 +39,7 @@ const playerListReducer = (state = defaultState, action)=>{
       })
       return updatedPlayerList;
     }
-
   }
-
   if (mapActionStringToActionDispatchCall[action.type]) return mapActionStringToActionDispatchCall[action.type]();
   return state;
 }
