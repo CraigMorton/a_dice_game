@@ -35,7 +35,7 @@ const getDefaultState = () => {
 
   state.playerList = [];
   for (let i = 0; i < state.settings.numPlayers; i++){
-    state.playerList[i] = {player_id: i, health: state.settings.playerMaxHealth, maxHealth: state.settings.playerMaxHealth, sharedResource: 0};
+    state.playerList[i] = {player_id: i, health: state.settings.playerMaxHealth, maxHealth: state.settings.playerMaxHealth, sharedResource: 0, isDead: false};
   }
   return state;
 }

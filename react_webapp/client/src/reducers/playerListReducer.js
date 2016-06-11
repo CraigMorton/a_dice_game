@@ -35,18 +35,25 @@ const playerListReducer = (state = defaultState, action)=>{
       // console.log("player list take arrow damage: list: ", updatedHealthPlayerList);
       return updatedHealthPlayerList;
     },
-    "REMOVE_DEAD_FROM_PLAYER_LIST": () => {
-      let deadPlayerIndexes = []
-      state.forEach((item, index) => {
-        if (item.health <= 0) deadPlayerIndexes.push(index);
+    "SET_DEAD_STATUS_OF_PLAYER_LIST": () => {
+      const newPlayerList = state.map((player) => {
+        if (player.health <= 0) return {...player, isDead: true};
+        return player
       })
-      if (deadPlayerIndexes.length <= 0) return state;
-      let updatedPlayerList = state.slice();
-      deadPlayerIndexes.forEach((deadPlayerIndex) => {
-        updatedPlayerList = [ ...updatedPlayerList.slice(0, deadPlayerIndex), ...updatedPlayerList.slice(deadPlayerIndex + 1) ];
-      })
-      return updatedPlayerList;
+      return newPlayerList;
     }
+    // "REMOVE_DEAD_FROM_PLAYER_LIST": () => {
+    //   let deadPlayerIndexes = []
+    //   state.forEach((item, index) => {
+    //     if (item.health <= 0) deadPlayerIndexes.push(index);
+    //   })
+    //   if (deadPlayerIndexes.length <= 0) return state;
+    //   let updatedPlayerList = state.slice();
+    //   deadPlayerIndexes.forEach((deadPlayerIndex) => {
+    //     updatedPlayerList = [ ...updatedPlayerList.slice(0, deadPlayerIndex), ...updatedPlayerList.slice(deadPlayerIndex + 1) ];
+    //   })
+    //   return updatedPlayerList;
+    // }
   }
   if (mapActionStringToActionDispatchCall[action.type]) return mapActionStringToActionDispatchCall[action.type]();
   return state;

@@ -4,14 +4,20 @@ const PlayerListItem = ({
   listener,
   isTargetted,
   isCurrentPlayer,
+  isDead,
   id,
   health,
   maxHealth,
   sharedResource
 }) => {
+  let colour = "skyblue";
+  if (isDead) colour = "grey";
+  if (isCurrentPlayer) colour = "limegreen";
+  if (isTargetted) colour = "tomato";
+  // , border: isTargetted ? "4px solid tomato" : null
   return(
-    <div onClick={listener} id={id}
-    style={{backgroundColor: isTargetted ? "tomato" : "skyblue", border: isCurrentPlayer ? "4px solid limegreen" : null}}
+    <div onClick={isDead ? null : listener} id={id}
+    style={{backgroundColor: colour}}
     >
     <p id={id}>Player ID: {id}</p>
     <p id={id}>Health: {health}/{maxHealth}</p>
