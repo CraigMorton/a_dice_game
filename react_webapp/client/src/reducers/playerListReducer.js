@@ -16,6 +16,7 @@ const playerListReducer = (state = defaultState, action)=>{
       return newPlayerList;
     },
     "GIVE_SHARED_RESOURCE_TO_ACTIVE_PLAYER": () => {
+      return [ Object.assign({}, state[0], {sharedResource: state[0].sharedResource + 1}), ...state.slice(1)]
       return [{...state[0], sharedResource: state[0].sharedResource + 1}, ...state.slice(1)]
     },
     "DEAL_SHARED_RESOURCE_DAMAGE": () => {

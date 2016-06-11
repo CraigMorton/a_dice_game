@@ -8,7 +8,6 @@ const sharedResourcePoolEmptyDispatcher = (sharedResourceTotal = 0) => {
     store.dispatch(resetSharedResourcePool());
     store.dispatch(removeDeadFromPlayerList());
   }
-
   let dead = (store.getState().playerList[0].health <= 0);
   if (dead) nextTurnDispatcher();
 }

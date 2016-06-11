@@ -1,12 +1,10 @@
 import store from "../store.js";
 
 const playerListListeners = {
-  onDomEvent: (e)=>{
-    // dom element that triggered this event (for grabbing id etc.):
-    e.target
-    console.log(e.target);
-    // or e.currentTarget
-    store.dispatch({type: "ACTION_NAME-ABC"})
+  onTargetSelect: (e)=>{
+    const id = parseInt(e.target.id)
+    console.log(id);
+    // targetPlayerDispatcher(id);
   }
 }
 

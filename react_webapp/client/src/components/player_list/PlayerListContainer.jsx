@@ -1,14 +1,23 @@
 import React from "react";
-// import {PresentationComponent} from "./presentation/PresentationComponent.jsx";
+import PlayerListItem from "./presentation/PlayerListItem.jsx";
 
-export default ({
+const PlayerListContainer = ({
   state,
-  listeners
+  listeners,
+  currentPlayerTargetId
 }) => {
+  console.log(listeners);
+  let playerListItems = [];
+  for (let i = 0; i < state.length; i++){
+    let isTargetted = (currentPlayerTargetId === state[i].player_id)
+    playerListItems.push(<PlayerListItem id={state[i].player_id} key={state[i].player_id} isTargetted={isTargetted} health={state[i].health} maxHealth={state[i].maxHealth} sharedResource={state[i].sharedResource} listener={listeners.onTargetSelect} onClick={listeners.onTargetSelect}/>)
+  }
   return(
     <div className="react-container">
     <h5>PlayerListContainer</h5>
-    <button valueOfStateNeeded={state.valueOfStateNeeded} listenerNeeded={listeners.listenerNeeded}/>
+    {playerListItems}
     </div>
     )
 }
+
+export default PlayerListContainer;
