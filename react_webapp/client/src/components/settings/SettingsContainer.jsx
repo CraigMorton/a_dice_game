@@ -5,6 +5,7 @@ const SettingsContainer = ({
   listeners,
   settingsDisabled
 }) => {
+  if (settingsDisabled) return null;
   return(
     <div className="react-container">
     <h5>Settings</h5>
