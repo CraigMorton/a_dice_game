@@ -6,7 +6,6 @@ const PlayerListContainer = ({
   listeners,
   currentPlayerTargetId
 }) => {
-  console.log(listeners);
   let playerListItems = [];
   for (let i = 0; i < state.length; i++){
     let isTargetted = (currentPlayerTargetId === state[i].player_id)
