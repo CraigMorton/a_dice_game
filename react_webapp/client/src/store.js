@@ -12,7 +12,8 @@ const defaultState = {
     actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
     minigunAvailable: true,
     rollsRemaining: 3,
-    canRoll: true
+    canRoll: true,
+    targettedPlayerId: null
   },
   gameInfo: {
     sharedResource: {count: 9, max: 9},
