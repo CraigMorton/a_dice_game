@@ -16,21 +16,3 @@ const GameInfoContainer = ({
 )
 
 export default GameInfoContainer;
-
-
-// var StatsContainer = React.createClass({
-//   contextTypes: {store: React.PropTypes.object},
-//   render: function(){
-//     // destructuring objects syntax
-//     // {keyNameInSourceObject: variableNameToCreate} = sourceObject;
-//     const {store: store} = this.context;
-//     const {stats: state} = store.getState();
-//     return(
-//       <div>
-//         <DiceRolledCounter count={state.diceRolledCount}/>
-//       </div>
-//     );
-//   }
-// })
-
-// module.exports = StatsContainer;
