@@ -9,7 +9,9 @@ const PlayerListItem = ({
   sharedResource
 }) => {
   return(
-    <div onClick={listener} id={id}>
+    <div onClick={listener} id={id}
+    style={{backgroundColor: isTargetted ? "tomato" : "skyblue"}}
+    >
     <p id={id}>Player ID: {id}</p>
     <p id={id}>Health: {health}/{maxHealth}</p>
     <p id={id}>Arrows: {sharedResource}</p>
