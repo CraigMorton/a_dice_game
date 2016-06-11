@@ -37,3 +37,7 @@ const moveSavedDiceToArrayStart = (savedDiceIds) => {
   return {type: "MOVE_SAVED_DICE_TO_ARRAY_START", savedDiceIds: savedDiceIds}
 }
 export {moveSavedDiceToArrayStart};
+
+const refreshCurrentPlayerDefaultState = () => ({type: "REFRESH_CURRENT_PLAYER_DEFAULT_STATE"})
+export {refreshCurrentPlayerDefaultState};
+

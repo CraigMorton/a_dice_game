@@ -1,15 +1,17 @@
-const defaultState = {
-  dice: [{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
-  actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
-  minigunAvailable: true,
-  rollsRemaining: 3,
-  canRoll: true,
-  targettedPlayerId: null
-}
+import defaultStateGetter from "../defaultState.js";
+const defaultState = defaultStateGetter().currentPlayer;
+// const refreshDefaultState = () => {
+//   import defaultStateObject from "../defaultState.js";
+//   return defaultStateObject.currentPlayer;
+// }
 
 const currentPlayerReducer = (state = defaultState, action)=>{
   const actionToNewState = {
     // "RETURN_STATE_PASSED_IN": () => state,
+    "REFRESH_CURRENT_PLAYER_DEFAULT_STATE": () => {
+      const refreshedState = defaultStateGetter().currentPlayer;
+      return Object.assign({}, state, refreshedState)
+    },
     "ROLL_UNSAVED_DICE": () => {
       let newArray = state.dice.map((die)=>{
         if (die.saved) return die;

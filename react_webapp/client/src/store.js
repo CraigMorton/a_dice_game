@@ -5,26 +5,6 @@ import playerListReducer from "./reducers/playerListReducer.js";
 import settingsReducer from "./reducers/settingsReducer.js";
 import globalReducerCreator from "./reducers/globalReducerCreator.js";
 
-const defaultState = {
-  // implemented as default parameters on each reducer
-  currentPlayer: {
-    dice: [{value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}, {value: 0, saved: false}],
-    actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
-    minigunAvailable: true,
-    rollsRemaining: 3,
-    canRoll: true,
-    targettedPlayerId: null
-  },
-  gameInfo: {
-    sharedResource: {count: 9, max: 9},
-    gameWinner: null,
-    diceRolledCount: 0,
-    turnsPlayedCount: 0
-  },
-  playerList: [{player_id: 0, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}],
-  settings: {numDice: 5, sharedResourceMax: 9}
-};
-
 const previousState = undefined // get this from database when saving game is implemented
 
 const combinedReducer = combineReducers({

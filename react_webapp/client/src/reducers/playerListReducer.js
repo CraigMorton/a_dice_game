@@ -1,7 +1,15 @@
-const defaultState = [{player_id: 0, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}]
+// import defaultStateObject from "../defaultState.js";
+// const defaultState = defaultStateObject.playerList;
+import defaultStateGetter from "../defaultState.js";
+const defaultState = defaultStateGetter().playerList;
+// const defaultState = [{player_id: 0, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}]
 
 const playerListReducer = (state = defaultState, action)=>{
   const mapActionStringToActionDispatchCall = {
+    "REFRESH_PLAYER_LIST_DEFAULT_STATE": () => {
+      const refreshedState = defaultStateGetter().playerList;
+      return refreshedState
+    },
     "THREE_GRENADES_DAMAGE": () => {
       if (action.grenadeCount >= 3) return [{...state[0], health: state[0].health - 1}, ...state.slice(1)]
       return state;

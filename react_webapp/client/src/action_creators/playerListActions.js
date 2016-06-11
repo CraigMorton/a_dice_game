@@ -18,5 +18,7 @@ export {dealSharedResourceDamage};
 const toggleTargetPlayer = (id = null) => ({type: "TOGGLE_TARGET_PLAYER", id: id})
 export {toggleTargetPlayer};
 
+const refreshPlayerListDefaultState = () => ({type: "REFRESH_PLAYER_LIST_DEFAULT_STATE"})
+export {refreshPlayerListDefaultState};
 
 
