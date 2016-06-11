@@ -9,7 +9,7 @@ import SettingsContainer from "./settings/SettingsContainer.jsx";
 //   // API REQUEST HERE
 // }
 
-export default ({
+const AppContainer =  ({
   state,
   listeners
 }) => {
@@ -22,6 +22,8 @@ export default ({
   </div>
   )
 }
+
+export default AppContainer;
 
 // // es5 version for demonstration purposes:
 // // //////////////////////////////////////////////////// //////////////////////////////////////////////////

@@ -12,4 +12,4 @@ const EndTurnButton = ({
     </button>)
 }
 
-export {EndTurnButton};
+export default EndTurnButton;

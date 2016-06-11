@@ -9,4 +9,4 @@ const CurrentPlayerActionCounters = ({
     </div>)
 }
 
-export {CurrentPlayerActionCounters};
+export default CurrentPlayerActionCounters;

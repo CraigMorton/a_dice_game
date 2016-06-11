@@ -1,13 +1,13 @@
 import React from "react";
-import {CurrentPlayerActionCounters} from "./presentation/CurrentPlayerActionCounters.jsx";
-import {CurrentPlayerHealth} from "./presentation/CurrentPlayerHealth.jsx";
-import {CurrentPlayerSharedResource} from "./presentation/CurrentPlayerSharedResource.jsx";
-import {EndTurnButton} from "./presentation/EndTurnButton.jsx";
-import {DiceList} from "./presentation/DiceList.jsx";
-import {RollDiceButton} from "./presentation/RollDiceButton.jsx";
+import CurrentPlayerActionCounters from "./presentation/CurrentPlayerActionCounters.jsx";
+import CurrentPlayerHealth from "./presentation/CurrentPlayerHealth.jsx";
+import CurrentPlayerSharedResource from "./presentation/CurrentPlayerSharedResource.jsx";
+import EndTurnButton from "./presentation/EndTurnButton.jsx";
+import DiceList from "./presentation/DiceList.jsx";
+import RollDiceButton from "./presentation/RollDiceButton.jsx";
 import CurrentPlayerTarget from "./presentation/CurrentPlayerTarget.jsx";
 
-export default ({
+const CurrentPlayerContainer = ({
   state,
   listeners,
   playerListItem
@@ -34,3 +34,5 @@ export default ({
     </div>
     )
 }
+
+export default CurrentPlayerContainer;

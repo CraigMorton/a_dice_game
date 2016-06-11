@@ -9,4 +9,4 @@ const CurrentPlayerSharedResource = ({
     </div>)
 }
 
-export {CurrentPlayerSharedResource};
+export default CurrentPlayerSharedResource;

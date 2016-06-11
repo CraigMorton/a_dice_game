@@ -1,9 +1,9 @@
 import React from "react";
-import {DiceRolledCounter} from "./presentation/DiceRolledCounter.jsx";
-import {TurnsPlayedCounter} from "./presentation/TurnsPlayedCounter.jsx";
-import {SharedResource} from "./presentation/SharedResource.jsx";
+import DiceRolledCounter from "./presentation/DiceRolledCounter.jsx";
+import TurnsPlayedCounter from "./presentation/TurnsPlayedCounter.jsx";
+import SharedResource from "./presentation/SharedResource.jsx";
 
-export default ({
+const GameInfoContainer = ({
   state,
   listeners
 })=>(
@@ -14,6 +14,8 @@ export default ({
 <SharedResource count={state.sharedResource.count} maximum={state.sharedResource.max} />
 </div>
 )
+
+export default GameInfoContainer;
 
 
 // var StatsContainer = React.createClass({

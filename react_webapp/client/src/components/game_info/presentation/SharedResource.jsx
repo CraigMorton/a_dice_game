@@ -11,4 +11,4 @@ const SharedResource = ({
     </div>)
 }
 
-export {SharedResource};
+export default SharedResource;

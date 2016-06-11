@@ -1,7 +1,6 @@
 import React from "react";
 
 const RollDiceButton = ({
-// props here (as named params?)
   listener,
   enabled,
   label
@@ -13,7 +12,7 @@ style={{backgroundColor: enabled ? "green" : "red"}}
 )
 }
 
-export {RollDiceButton};
+export default RollDiceButton;
 
   // , {state: }
   // console.log(store);

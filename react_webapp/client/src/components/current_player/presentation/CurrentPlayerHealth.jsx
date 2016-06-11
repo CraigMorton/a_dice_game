@@ -16,4 +16,4 @@ const CurrentPlayerHealth = ({
     </div>)
 }
 
-export {CurrentPlayerHealth};
+export default CurrentPlayerHealth;

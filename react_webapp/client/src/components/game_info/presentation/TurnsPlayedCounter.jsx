@@ -8,4 +8,4 @@ const TurnsPlayedCounter = ({
     )
 }
 
-export {TurnsPlayedCounter};
+export default TurnsPlayedCounter;

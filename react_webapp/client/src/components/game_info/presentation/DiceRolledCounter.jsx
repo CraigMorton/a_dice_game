@@ -5,7 +5,7 @@ const DiceRolledCounter = ({
   listeners
 }) => (<h4>Dice Rolled: {state}</h4>)
 
-export {DiceRolledCounter};
+export default DiceRolledCounter;
 
 // export default () => (<div>{this.props.count}</div>)
 // var DiceRolledCounter = React.createClass({

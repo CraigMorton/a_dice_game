@@ -19,7 +19,7 @@ onDieClick
   )
 }
 
-export {DiceList};
+export default DiceList;
 
 
 // var React = require('react');
