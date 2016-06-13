@@ -25,3 +25,6 @@ const refreshPlayerListDefaultState = () => ({type: "REFRESH_PLAYER_LIST_DEFAULT
 export {refreshPlayerListDefaultState};
 
 
+const shootTargettedPlayer = (playerId) => ({type: "SHOOT_TARGETTED_PLAYER", playerId: playerId})
+export {shootTargettedPlayer};
+

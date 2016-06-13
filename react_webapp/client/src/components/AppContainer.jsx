@@ -12,7 +12,7 @@ const AppContainer =  ({
   <div>
       <CurrentPlayerContainer state={state.currentPlayer} listeners={listeners.currentPlayer} playerListItem={state.playerList[0]}/>
       <GameInfoContainer state={state.gameInfo} listeners={listeners.gameInfo}/>
-      <PlayerListContainer state={state.playerList} listeners={listeners.playerList} currentPlayerTargetId={state.currentPlayer.targettedPlayerId}/>
+      <PlayerListContainer state={state.playerList} listeners={listeners.playerList} currentPlayerTargetId={state.currentPlayer.targettedPlayerId} currentPlayerActionCounters={state.currentPlayer.actionCounters}/>
       <SettingsContainer state={state.settings} listeners={listeners.settings} settingsDisabled={(state.gameInfo.diceRolledCount > 0)}/>
   </div>
   )

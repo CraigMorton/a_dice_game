@@ -7,7 +7,7 @@ const defaultState = defaultStateGetter().currentPlayer;
 
 const currentPlayerReducer = (state = defaultState, action)=>{
   const actionToNewState = {
-    "RETURN_STATE_PASSED_IN": () => state,
+    // "RETURN_STATE_PASSED_IN": () => state,
     "REFRESH_CURRENT_PLAYER_DEFAULT_STATE": () => {
       const refreshedState = defaultStateGetter().currentPlayer;
       return Object.assign({}, state, refreshedState)
@@ -69,6 +69,15 @@ const currentPlayerReducer = (state = defaultState, action)=>{
     "TOGGLE_TARGET_PLAYER": () => {
       if (state.targettedPlayerId === action.id) return {...state, targettedPlayerId: null};
       return {...state, targettedPlayerId: action.id};
+    },
+    "DECREMENT_ACTION_COUNTER": () => {
+      const actionUsed = action.actionUsed;
+      if (actionUsed > 0){
+        const newActionCounter = {}
+        newActionCounter[actionUsed] = state.actionCounters[actionUsed] - 1;
+        return {...state, actionCounters: Object.assign({}, state.actionCounters, newActionCounter)}
+      }
+      return state;
     }
   }
   if (actionToNewState[action.type]) return actionToNewState[action.type]();

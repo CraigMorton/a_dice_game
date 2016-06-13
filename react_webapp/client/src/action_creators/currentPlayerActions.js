@@ -24,6 +24,9 @@ export {updateActionCounters};
 const resetCurrentPlayer = () => ({type: "RESET_CURRENT_PLAYER"})
 export {resetCurrentPlayer};
 
+const decrementActionCounter = (dieValueForAction) => ({type: "DECREMENT_ACTION_COUNTER", counter: dieValueForAction})
+export {decrementActionCounter};
+
 // //////////////////////////////////////////////////
 // OLD ACTIONS - NOT IN USE
 // //////////////////////////////////////////////////
