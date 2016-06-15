@@ -16,7 +16,7 @@ const PlayerListContainer = ({
     isInRange.two = (index === 2 || index === state.length - 2);
     const isTargetted = (currentPlayerTargetId === id);
     const isCurrentPlayer = (id === state[0].player_id)
-    playerListItems[id] = (<PlayerListItem id={id} key={id} stateIndex={index} isTargetted={isTargetted} isCurrentPlayer={isCurrentPlayer} health={player.health} maxHealth={player.maxHealth} sharedResource={player.sharedResource} onTarget={listeners.onTargetSelect} onShootTarget={listeners.onShootTarget} isDead={player.isDead} isInRange={isInRange} currentPlayerActionCounters={currentPlayerActionCounters}/>)
+    playerListItems[id] = (<PlayerListItem id={id} key={id} stateIndex={index} isTargetted={isTargetted} isCurrentPlayer={isCurrentPlayer} health={player.health} maxHealth={player.maxHealth} sharedResource={player.sharedResource} onTarget={listeners.onTargetSelect} onActivateActionOnTarget={listeners.onActivateActionOnTarget} isDead={player.isDead} isInRange={isInRange} currentPlayerActionCounters={currentPlayerActionCounters}/>)
   // const playerListItems = state.map((player) => {
   //   const isTargetted = (currentPlayerTargetId === player.player_id);
   //   const isCurrentPlayer = (player.player_id === state[0].player_id)

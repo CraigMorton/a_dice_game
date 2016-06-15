@@ -28,3 +28,6 @@ export {refreshPlayerListDefaultState};
 const shootTargettedPlayer = (playerId) => ({type: "SHOOT_TARGETTED_PLAYER", playerId: playerId})
 export {shootTargettedPlayer};
 
+const healTargettedPlayer = (playerId) => ({type: "HEAL_TARGETTED_PLAYER", playerId: playerId})
+export {healTargettedPlayer};
+

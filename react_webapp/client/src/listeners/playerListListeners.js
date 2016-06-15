@@ -1,6 +1,6 @@
 import store from "../store.js";
 import targetPlayerDispatcher from "../action_dispatchers/player_list_dispatchers/targetPlayerDispatcher.js";
-import shootTargetDispatcher from "../action_dispatchers/player_list_dispatchers/shootTargetDispatcher.js";
+import activateActionOnTargetDispatcher from "../action_dispatchers/player_list_dispatchers/activateActionOnTargetDispatcher.js";
 
 
 const playerListListeners = {
@@ -8,10 +8,10 @@ const playerListListeners = {
     const id = parseInt(e.target.id);
     targetPlayerDispatcher(id);
   },
-  onShootTarget: (e) => {
+  onActivateActionOnTarget: (e) => {
     const targetId = parseInt(e.target.parentNode.id);
     const dieValueForAction = parseInt(e.target.id);
-    shootTargetDispatcher(targetId, dieValueForAction);
+    activateActionOnTargetDispatcher(targetId, dieValueForAction);
   }
 }
 

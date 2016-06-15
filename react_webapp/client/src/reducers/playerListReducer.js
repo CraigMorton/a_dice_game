@@ -48,8 +48,19 @@ const playerListReducer = (state = defaultState, action)=>{
       for (let i = 0; i < state.length; i++){
         if (state[i].player_id === targetId) targetIndex = i;
       }
-      console.log(state[targetIndex]);
       return [...state.slice(0, targetIndex), {...state[targetIndex], health: (state[targetIndex].health - 1) }, ...state.slice(targetIndex + 1) ]
+    },
+    "HEAL_TARGETTED_PLAYER": () => {
+      const targetId = action.playerId;
+      let targetIndex = null;
+      for (let i = 0; i < state.length; i++){
+        if (state[i].player_id === targetId) targetIndex = i;
+      }
+      if (state[targetIndex].health >= state[targetIndex].maxHealth){
+        return [...state.slice(0, targetIndex), {...state[targetIndex], health: (state[targetIndex].maxHealth) }, ...state.slice(targetIndex + 1) ]
+      }
+      return [...state.slice(0, targetIndex), {...state[targetIndex], health: (state[targetIndex].health + 1) }, ...state.slice(targetIndex + 1) ]
+
     }
     // "REMOVE_DEAD_FROM_PLAYER_LIST": () => {
     //   let deadPlayerIndexes = []
