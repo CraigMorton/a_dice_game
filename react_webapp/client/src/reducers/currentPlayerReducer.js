@@ -71,7 +71,7 @@ const currentPlayerReducer = (state = defaultState, action)=>{
       return {...state, targettedPlayerId: action.id};
     },
     "DECREMENT_ACTION_COUNTER": () => {
-      const actionUsed = action.actionUsed;
+      const actionUsed = action.counter;
       if (actionUsed > 0){
         const newActionCounter = {}
         newActionCounter[actionUsed] = state.actionCounters[actionUsed] - 1;
