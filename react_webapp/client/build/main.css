@@ -1,7 +1,12 @@
 .react-container {
   border: 1px black solid;
-  display: inline-flex;,
+  display: inline-flex;
   
+}
+
+li {
+  display: inline-flex;
+  margin: 1px;
 }
 
 * {

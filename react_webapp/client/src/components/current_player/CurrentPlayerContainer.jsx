@@ -14,7 +14,6 @@ const CurrentPlayerContainer = ({
 }) => {
   return(
     <div className="react-container">
-    <h5>CurrentPlayerContainer</h5>
     <text>Player ID: {playerListItem.player_id}</text>
     <CurrentPlayerHealth health={playerListItem.health} maxHealth={playerListItem.maxHealth}/>
     <CurrentPlayerSharedResource count={playerListItem.sharedResource} />

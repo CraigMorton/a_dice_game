@@ -8,7 +8,6 @@ const GameInfoContainer = ({
   listeners
 })=>(
 <div className="react-container">
-<h5>GameInfoContainer</h5>
 <DiceRolledCounter state={state.diceRolledCount} />
 <TurnsPlayedCounter count={state.turnsPlayedCount} />
 <SharedResource count={state.sharedResource.count} maximum={state.sharedResource.max} />

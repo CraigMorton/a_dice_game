@@ -22,8 +22,8 @@ const PlayerListItem = ({
   if (isTargetted) colour = "tomato";
   let actionUsed = null;
   let healAction = null;
-  if (isTargetted && isInRange.one && currentPlayerActionCounters[1] > 0) actionUsed = 1;
-  if (isTargetted && isInRange.two && currentPlayerActionCounters[2] > 0) actionUsed = 2;
+  if (!isCurrentPlayer && isTargetted && isInRange.one && currentPlayerActionCounters[1] > 0) actionUsed = 1;
+  if (!isCurrentPlayer && isTargetted && isInRange.two && currentPlayerActionCounters[2] > 0) actionUsed = 2;
   if (isTargetted && currentPlayerActionCounters[3] > 0) healAction = 3;
   if (actionUsed === 1 || actionUsed === 2) shootButton = (<button id={actionUsed} onClick={onShootTarget}>Shoot!</button>);
   if (actionUsed === 3) healButton = (<button id={healAction} key={stateIndex} onClick={null}>Heal</button>);
@@ -36,6 +36,7 @@ const PlayerListItem = ({
     <p id={id}>Health: {health}/{maxHealth}</p>
     <p id={id}>Arrows: {sharedResource}</p>
     {shootButton}
+    {healButton}
     </div>)
 }
 

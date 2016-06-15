@@ -9,7 +9,7 @@ const updateSharedResouceMaxDispatcher = (updatedSettingObject) => {
   const mapUpdatedSettingObjectToDispatchCalls = {
     numPlayers: (updatedSettingObject) => {
       console.log(updatedSettingObject.numPlayers);
-      if (updatedSettingObject.numPlayers === "") updatedSettingObject.numPlayers = 3;
+      if (updatedSettingObject.numPlayers === "") updatedSettingObject.numPlayers = 8;
       if (updatedSettingObject.numPlayers < 3) updatedSettingObject.numPlayers = 3;
       if (updatedSettingObject.numPlayers > 8) updatedSettingObject.numPlayers = 8;
       store.dispatch(updateSetting(updatedSettingObject))

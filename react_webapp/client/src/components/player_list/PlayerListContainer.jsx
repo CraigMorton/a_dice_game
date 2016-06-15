@@ -24,7 +24,6 @@ const PlayerListContainer = ({
   });
   return(
     <div className="react-container">
-    <h5>PlayerListContainer</h5>
     {playerListItems}
     </div>
     )
