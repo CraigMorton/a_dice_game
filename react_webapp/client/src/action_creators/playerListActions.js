@@ -31,3 +31,6 @@ export {shootTargettedPlayer};
 const healTargettedPlayer = (playerId) => ({type: "HEAL_TARGETTED_PLAYER", playerId: playerId})
 export {healTargettedPlayer};
 
+const takeMinigunDamage = (minigunAvailable) => ({type: "TAKE_MINIGUN_DAMAGE", minigunAvailable: minigunAvailable})
+export {takeMinigunDamage};
+

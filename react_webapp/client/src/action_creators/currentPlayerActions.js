@@ -44,3 +44,6 @@ export {moveSavedDiceToArrayStart};
 const refreshCurrentPlayerDefaultState = () => ({type: "REFRESH_CURRENT_PLAYER_DEFAULT_STATE"})
 export {refreshCurrentPlayerDefaultState};
 
+const fireMinigun = (minigunAvailable) => ({type: "FIRE_MINIGUN", minigunAvailable: minigunAvailable})
+export {fireMinigun};
+

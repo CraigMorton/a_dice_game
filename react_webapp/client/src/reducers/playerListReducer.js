@@ -60,7 +60,16 @@ const playerListReducer = (state = defaultState, action)=>{
         return [...state.slice(0, targetIndex), {...state[targetIndex], health: (state[targetIndex].maxHealth) }, ...state.slice(targetIndex + 1) ]
       }
       return [...state.slice(0, targetIndex), {...state[targetIndex], health: (state[targetIndex].health + 1) }, ...state.slice(targetIndex + 1) ]
-
+    },
+    "TAKE_MINIGUN_DAMAGE": () => {
+      if (action.minigunAvailable === 1){
+        const damagedPlayers = state.map((player, index) => {
+          if (index === 0) return player;
+          return {...player, health: player.health - 1};
+        })
+        return damagedPlayers
+      }
+      return state;
     }
     // "REMOVE_DEAD_FROM_PLAYER_LIST": () => {
     //   let deadPlayerIndexes = []

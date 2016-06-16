@@ -6,12 +6,16 @@ import EndTurnButton from "./presentation/EndTurnButton.jsx";
 import DiceList from "./presentation/DiceList.jsx";
 import RollDiceButton from "./presentation/RollDiceButton.jsx";
 import CurrentPlayerTarget from "./presentation/CurrentPlayerTarget.jsx";
+import FireMinigunButton from "./presentation/FireMinigunButton.jsx";
 
 const CurrentPlayerContainer = ({
   state,
   listeners,
   playerListItem
 }) => {
+    let minigunButton = null;
+    const minigunAvailable = (state.minigunAvailable && state.actionCounters[4] >= 3)
+    if (minigunAvailable) minigunButton = <FireMinigunButton minigunAvailable={minigunAvailable} onFireMinigunClick={listeners.onFireMinigunClick} />
   return(
     <div className="react-container">
     <text>Player ID: {playerListItem.player_id}</text>
@@ -24,6 +28,7 @@ const CurrentPlayerContainer = ({
     onDieClick={listeners.onDieClick}
     onDieValueChange={listeners.onDieValueChange}
     />
+    {minigunButton}
     <RollDiceButton
     listener={listeners.onRollDiceClick}
     label={"Roll Dice"}

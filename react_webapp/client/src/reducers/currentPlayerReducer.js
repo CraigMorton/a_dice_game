@@ -78,6 +78,10 @@ const currentPlayerReducer = (state = defaultState, action)=>{
         return {...state, actionCounters: Object.assign({}, state.actionCounters, newActionCounter)}
       }
       return state;
+    },
+    "FIRE_MINIGUN": () => {
+      if (action.minigunAvailable === 1) return {...state, minigunAvailable: false, actionCounters: {...state.actionCounters, 4: state.actionCounters[4] - 3}}
+      return state;
     }
   }
   if (actionToNewState[action.type]) return actionToNewState[action.type]();
