@@ -27,7 +27,7 @@ const currentPlayerReducer = (state = defaultState, action)=>{
     "AUTO_SAVE_GRENADES": () => {
       // could integrate this action into "ROLL_DICE" action
       const newArray = state.dice.map((item, index)=>{
-        if (item.value === action.value) return {...item, saved: true};
+        if (item.value === action.value) return {...item, saved: true, locked: true};
         return item;
       })
       return {...state, dice: newArray }
@@ -36,6 +36,7 @@ const currentPlayerReducer = (state = defaultState, action)=>{
       const index = action.id;
       const diceArray = state.dice.slice();
       const die = diceArray[index];
+      if (die.locked) return state;
       const newDie = {...die, saved: !die.saved};
       const newDiceArray = [ ...diceArray.slice(0, index), newDie, ...diceArray.slice((index + 1)) ];
       return {...state, dice: newDiceArray};
@@ -82,6 +83,15 @@ const currentPlayerReducer = (state = defaultState, action)=>{
     "FIRE_MINIGUN": () => {
       if (action.minigunAvailable === 1) return {...state, minigunAvailable: false, actionCounters: {...state.actionCounters, 4: state.actionCounters[4] - 3}}
       return state;
+    },
+    "LOCK_DIE": () => {
+      if (action.dieId === null) return state;
+      const index = action.dieId;
+      const diceArray = state.dice.slice();
+      const die = diceArray[index];
+      const newDie = {...die, locked: true, saved: true};
+      const newDiceArray = [ ...diceArray.slice(0, index), newDie, ...diceArray.slice((index + 1)) ];
+      return {...state, dice: newDiceArray};
     }
   }
   if (actionToNewState[action.type]) return actionToNewState[action.type]();

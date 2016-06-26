@@ -47,3 +47,7 @@ export {refreshCurrentPlayerDefaultState};
 const fireMinigun = (minigunAvailable) => ({type: "FIRE_MINIGUN", minigunAvailable: minigunAvailable})
 export {fireMinigun};
 
+const lockDie = (dieId) => ({type: "LOCK_DIE", dieId: dieId})
+export {lockDie};
+
+

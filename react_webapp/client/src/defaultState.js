@@ -30,7 +30,7 @@ const getDefaultState = () => {
 
   state.currentPlayer.dice = [];
   for (let i = 0; i < state.settings.numDice; i++){
-    state.currentPlayer.dice[i] = {value: 0, saved: false};
+    state.currentPlayer.dice[i] = {value: 0, saved: false, locked: false};
   }
 
   state.playerList = [];

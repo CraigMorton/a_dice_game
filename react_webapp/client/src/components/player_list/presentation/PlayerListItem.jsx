@@ -27,7 +27,6 @@ const PlayerListItem = ({
   if (isTargetted && currentPlayerActionCounters[3] > 0) healAction = 3;
   if (shootAction === 1 || shootAction === 2) shootButton = (<button id={shootAction} onClick={onActivateActionOnTarget}>Shoot!</button>);
   if (healAction === 3) healButton = (<button id={healAction} key={stateIndex} onClick={onActivateActionOnTarget}>Heal</button>);
-  // , border: isTargetted ? "4px solid tomato" : null
   return(
     <div style={{backgroundColor: colour}} id={id}>
     <div onClick={isDead ? null : onTarget} id={id}>
