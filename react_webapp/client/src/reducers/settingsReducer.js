@@ -1,5 +1,3 @@
-// import defaultStateObject from "../defaultState.js";
-// const defaultState = defaultStateObject.settings;
 import defaultStateGetter from "../defaultState.js";
 const defaultState = defaultStateGetter().settings;
 

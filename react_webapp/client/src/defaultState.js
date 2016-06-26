@@ -6,7 +6,6 @@ const getDefaultState = () => {
     settings = store.getState().settings;
   }
   const state = {
-    // implemented as default parameters on each reducer
     currentPlayer: {
       dice: [], // ARRAY LENGTH SETTINGS-DEPENDANT
       actionCounters: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0},
@@ -41,4 +40,3 @@ const getDefaultState = () => {
 }
 
 export default getDefaultState;
-// export default state;

@@ -35,15 +35,9 @@ const jsonApiHelper = {
     request.send( JSON.stringify(data) );
   }
 }
-
-// module.exports.apiGet = jsonApiHelper.get;
-// module.exports.apiPost = jsonApiHelper.post;
 let get = jsonApiHelper.get;
 let post = jsonApiHelper.post;
 
 export {get as apiGet};
 export {post as apiPost};
 export {jsonApiHelper};
-
-// export default jsonApiHelper;
-

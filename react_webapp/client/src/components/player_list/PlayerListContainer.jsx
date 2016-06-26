@@ -17,6 +17,7 @@ const PlayerListContainer = ({
     const isTargetted = (currentPlayerTargetId === id);
     const isCurrentPlayer = (id === state[0].player_id)
     playerListItems[id] = (<PlayerListItem id={id} key={id} stateIndex={index} isTargetted={isTargetted} isCurrentPlayer={isCurrentPlayer} health={player.health} maxHealth={player.maxHealth} sharedResource={player.sharedResource} onTarget={listeners.onTargetSelect} onActivateActionOnTarget={listeners.onActivateActionOnTarget} isDead={player.isDead} isInRange={isInRange} currentPlayerActionCounters={currentPlayerActionCounters}/>)
+    // LIST IN STATE ORDER BELOW - ABOVE IS IN PLAYER_ID ORDER
   // const playerListItems = state.map((player) => {
   //   const isTargetted = (currentPlayerTargetId === player.player_id);
   //   const isCurrentPlayer = (player.player_id === state[0].player_id)

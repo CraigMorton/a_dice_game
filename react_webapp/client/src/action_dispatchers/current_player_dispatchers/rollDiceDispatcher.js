@@ -7,12 +7,10 @@ import nextTurnDispatcher from "../global_dispatchers/nextTurnDispatcher.js";
 import giveSharedResourceDispatcher from "../global_dispatchers/giveSharedResourceDispatcher.js"
 
 const rollDiceDispatcher = () => {
-  // let savedDiceIds = [];
   let dice = store.getState().currentPlayer.dice;
   let numDiceToRoll = 0;
   for (let i = 0; i < dice.length; i++){
     const saved = dice[i].saved;
-    // if (saved) savedDiceIds.push(i)
     if (!saved) numDiceToRoll++;
   }
   store.dispatch(rollUnsavedDice());
@@ -40,11 +38,6 @@ const rollDiceDispatcher = () => {
     if (die.value === 6) sharedResourceCount++
   })
   giveSharedResourceDispatcher(sharedResourceCount);
-
-  
-
-
-
 }
 
 

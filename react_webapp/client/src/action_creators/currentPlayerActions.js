@@ -27,20 +27,6 @@ export {resetCurrentPlayer};
 const decrementActionCounter = (dieValueForAction) => ({type: "DECREMENT_ACTION_COUNTER", counter: dieValueForAction})
 export {decrementActionCounter};
 
-// //////////////////////////////////////////////////
-// OLD ACTIONS - NOT IN USE
-// //////////////////////////////////////////////////
-
-const rollDice = (savedDiceIds) => {
-  return {type: "ROLL_DICE", savedDiceIds: savedDiceIds}
-}
-export {rollDice};
-
-const moveSavedDiceToArrayStart = (savedDiceIds) => {
-  return {type: "MOVE_SAVED_DICE_TO_ARRAY_START", savedDiceIds: savedDiceIds}
-}
-export {moveSavedDiceToArrayStart};
-
 const refreshCurrentPlayerDefaultState = () => ({type: "REFRESH_CURRENT_PLAYER_DEFAULT_STATE"})
 export {refreshCurrentPlayerDefaultState};
 

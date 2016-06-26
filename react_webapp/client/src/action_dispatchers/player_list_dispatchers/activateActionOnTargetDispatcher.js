@@ -12,9 +12,6 @@ const activateActionOnTargetDispatcher = (playerId, counterToDecrement) => {
   let dieId = null;
   for (let i = 0; i < dice.length; i++){
     if (dice[i].value === counterToDecrement && !dice[i].locked) dieId = i;
-    console.log(dice[i].value);
-    console.log(counterToDecrement);
-    console.log(dieId);
   }
   store.dispatch(lockDie(dieId));
 }

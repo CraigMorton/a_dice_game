@@ -1,8 +1,5 @@
-// import defaultStateObject from "../defaultState.js";
-// const defaultState = defaultStateObject.playerList;
 import defaultStateGetter from "../defaultState.js";
 const defaultState = defaultStateGetter().playerList;
-// const defaultState = [{player_id: 0, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 1, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 2, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 3, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 4, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 5, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 6, health: 8, maxHealth: 8, sharedResource: 0}, {player_id: 7, health: 8, maxHealth: 8, sharedResource: 0}]
 
 const playerListReducer = (state = defaultState, action)=>{
   const mapActionStringToActionDispatchCall = {
@@ -32,7 +29,6 @@ const playerListReducer = (state = defaultState, action)=>{
         if (player.sharedResource > 0) return {...player, sharedResource: 0, health: player.health - player.sharedResource}
         return player;
       })
-      // console.log("player list take arrow damage: list: ", updatedHealthPlayerList);
       return updatedHealthPlayerList;
     },
     "SET_DEAD_STATUS_OF_PLAYER_LIST": () => {
