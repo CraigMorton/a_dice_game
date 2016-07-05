@@ -1,6 +1,7 @@
 import store from "./store.js";
 
 const getDefaultState = () => {
+  const initialSettings = {numDice: 5, sharedResourceMax: 9, numPlayers: 8, playerMaxHealth: 8};
   let settings = null;
   if (store){
     settings = store.getState().settings;
@@ -21,7 +22,7 @@ const getDefaultState = () => {
       turnsPlayedCount: 0
     },
     playerList: [], // ARRAY LENGTH SETTINGS-DEPENDANT
-    settings: settings ? settings : {numDice: 5, sharedResourceMax: 9, numPlayers: 8, playerMaxHealth: 8}
+    settings: settings ? settings : initialSettings
   };
 
   state.gameInfo.sharedResource.count = state.settings.sharedResourceMax;
