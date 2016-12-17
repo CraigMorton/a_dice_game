@@ -1,4 +1,4 @@
-import store from "../../store.js"
+import store from "../../store.js";
 import {fireMinigun} from "../../action_creators/currentPlayerActions.js";
 import {takeMinigunDamage} from "../../action_creators/playerListActions.js";
 import {lockDie} from "../../action_creators/currentPlayerActions.js";
