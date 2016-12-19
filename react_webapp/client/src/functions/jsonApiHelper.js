@@ -7,7 +7,7 @@ const jsonApiHelper = {
       if (request.status === 200){
         dataReturned = JSON.parse(request.responseText);
         console.log("data from API:", dataReturned);
-        if (callback) callback(dataReturned);
+        if (callback != null) callback(dataReturned);
         return dataReturned;
       }
     };// [end] request.onload function
@@ -27,7 +27,7 @@ const jsonApiHelper = {
         //   stateDataName: responseData
         // })
         console.log("POST JSONparsed responseText:", responseData);
-        if (callback) callback(responseData);
+        if (callback != null) callback(responseData);
         return responseData
       }
     }
